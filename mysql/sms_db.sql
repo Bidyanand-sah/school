@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Aug 19, 2026 at 06:33 AM
+-- Generation Time: Aug 19, 2026 at 10:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `sms_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `achievements`
+--
+
+CREATE TABLE `achievements` (
+  `id` int(11) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `description` text DEFAULT NULL,
+  `category` varchar(50) DEFAULT 'Other',
+  `is_pinned` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `achievements`
+--
+
+INSERT INTO `achievements` (`id`, `img`, `title`, `description`, `category`, `is_pinned`, `created_at`) VALUES
+(1, 'uploads/achievements/achievement_6a8549b1becb19.67846868.JPG', 'code', 'uhdhuiued', 'Academic', 0, '2026-08-19 06:14:09'),
+(2, 'uploads/achievements/achievement_6a8549cb2ae094.33289275.JPG', 'dsacdd', 'ewdwaed', 'Sports', 0, '2026-08-19 06:14:35'),
+(4, 'uploads/achievements/achievement_6a8553a91299c6.60934775.JPG', 'fgbdfgg', 'rgsrgsrg', 'Academic', 1, '2026-08-19 06:56:02'),
+(5, 'uploads/achievements/achievement_6a85539a6e28d4.96083976.PNG', 'fesdrgfr', 'ergrtg', 'Other', 1, '2026-08-19 06:56:26');
 
 -- --------------------------------------------------------
 
@@ -89,11 +115,11 @@ INSERT INTO `gallery` (`id`, `img`, `detail`, `Date`) VALUES
 (4, 'uploads/gallery/gallery_6a82617994bf21.53897206.png', '', '2026-08-17 06:48:49'),
 (5, 'uploads/gallery/gallery_6a8261921f6f39.26594743.png', '', '2026-08-17 06:49:14'),
 (6, 'uploads/gallery/gallery_6a82619f5e8f86.87259219.png', '', '2026-08-17 06:49:27'),
-(7, 'uploads/gallery/gallery_6a8261abe5e709.64276568.png', '', '2026-08-17 06:49:39'),
 (8, 'uploads/gallery/gallery_6a8261be028ea0.44678420.png', '', '2026-08-17 06:49:58'),
 (10, 'uploads/gallery/gallery_6a8261d4a9ab44.01839159.png', '', '2026-08-17 06:50:20'),
 (11, 'uploads/gallery/gallery_6a83b1d701e212.20592010.JPG', 'sdcsf', '2026-08-17 22:47:02'),
-(12, 'uploads/gallery/gallery_6a83b1fd99d585.56929434.JPG', 'hi', '2026-08-18 06:44:37');
+(12, 'uploads/gallery/gallery_6a83b1fd99d585.56929434.JPG', 'hi', '2026-08-18 06:44:37'),
+(13, 'uploads/gallery/gallery_6a855a8a2bff81.43702995.JPG', 'park', '2026-08-19 12:55:42');
 
 -- --------------------------------------------------------
 
@@ -180,6 +206,12 @@ INSERT INTO `testimonials` (`id`, `name`, `class`, `review_text`, `rating`, `cre
 --
 
 --
+-- Indexes for table `achievements`
+--
+ALTER TABLE `achievements`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `admin_users`
 --
 ALTER TABLE `admin_users`
@@ -221,6 +253,12 @@ ALTER TABLE `testimonials`
 --
 
 --
+-- AUTO_INCREMENT for table `achievements`
+--
+ALTER TABLE `achievements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
@@ -236,7 +274,7 @@ ALTER TABLE `enquiry`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `notice`
