@@ -16,6 +16,7 @@ while ($row = $result->fetch_assoc()) { $notices[] = $row; }
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="../comp/nav/nav.css">
     <link rel="stylesheet" href="notice_page.css">
+    <link rel="stylesheet" href="../comp/footer/footer.css">
 </head>
 <body data-theme="light-blue">
 
@@ -58,6 +59,7 @@ while ($row = $result->fetch_assoc()) { $notices[] = $row; }
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+    <?php include_once("../comp/footer/footer.php"); ?>
 
 </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="../comp/nav/nav.css">
     <link rel="stylesheet" href="review_page.css">
+    <link rel="stylesheet" href="../comp/footer/footer.css">
 </head>
 <body>
 <?php include_once("../comp/nav/nav.php"); ?>
@@ -57,6 +58,7 @@
         <div id="formMsg" class="form-msg"></div>
     </form>
 </section>
+<?php include_once("../comp/footer/footer.php"); ?>
 
 <script src="review_page.js"></script>
 </body>

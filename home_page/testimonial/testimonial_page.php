@@ -12,6 +12,7 @@ include '../../backend/con1.php';
     <link rel="stylesheet" href="../comp/nav/nav.css">
     <link rel="stylesheet" href="../comp/footer/footer.css">
     <link rel="stylesheet" href="testimonial_page.css">
+    
 </head>
 <body>
     <?php include_once("../comp/nav/nav.php"); ?>

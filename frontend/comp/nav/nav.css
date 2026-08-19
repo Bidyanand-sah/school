@@ -11,7 +11,7 @@
     --light-bg: #f5f6fa;
 }
 
-/* Theme Variables — teeno files (nav/sidebar/page) inhi ko use karte hain */
+/* Theme Variables */
 [data-theme="light-blue"] {
     --primary-color: #4a90e2;
     --secondary-color: #2c3e50;
@@ -37,7 +37,6 @@
     --text-color: #ffffff;
 }
 
-/* Body ko force karo taaki navbar ke niche content shuru ho, page ka apna CSS ise override na kar sake */
 body {
     padding-top: var(--navbar-height) !important;
     margin: 0 !important;
@@ -56,7 +55,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    z-index: 2000 !important;   /* sabse upar — koi bhi page-content isse neeche hi rahega */
+    z-index: 2000 !important;
 }
 
 [data-theme="neon-blue"] .navbar {
@@ -98,52 +97,11 @@ body {
 }
 .brand-logo i { font-size: 28px; }
 
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.navbar-menu li a {
-    text-decoration: none;
-    color: var(--text-color);
-    padding: 8px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-}
-.navbar-menu li a:hover { background: var(--light-bg); color: var(--primary-color); }
-[data-theme="neon-blue"] .navbar-menu li a { color: #8892b0; }
-[data-theme="neon-blue"] .navbar-menu li a:hover { color: var(--primary-color); background: rgba(0, 210, 255, 0.1); }
-
 .navbar-right {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-
-.navbar-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: var(--secondary-color);
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-.navbar-menu-toggle:hover { background: rgba(0,0,0,0.05); }
-[data-theme="neon-blue"] .navbar-menu-toggle { color: var(--primary-color); }
 
 .login-btn {
     padding: 8px 20px;
@@ -157,30 +115,6 @@ body {
     text-decoration: none;
 }
 .login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 768px) {
-    .navbar-menu-toggle { display: flex; }
-
-    .navbar-menu {
-        display: none;
-        position: absolute;
-        top: var(--navbar-height);
-        right: 20px;
-        background: var(--navbar-bg, #fff);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        min-width: 180px;
-        z-index: 2001;
-    }
-    .navbar-menu.show { display: flex; }
-    .navbar-menu li { width: 100%; }
-    .navbar-menu li a { width: 100%; padding: 12px 15px; }
-}
 
 @media (max-width: 480px) {
     .brand-logo span { display: none; }

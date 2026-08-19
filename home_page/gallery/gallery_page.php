@@ -17,12 +17,21 @@ while ($row = $result->fetch_assoc()) { $photos[] = $row; }
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="../comp/nav/nav.css">
     <link rel="stylesheet" href="gallery_page.css">
+    <link rel="stylesheet" href="../comp/achievement/achievement.css">
+    <link rel="stylesheet" href="../comp/footer/footer.css">
 </head>
 <body data-theme="light-blue">
 
     <?php
     include_once("../comp/nav/nav.php");
   ?>
+
+  <?php
+// Gallery page = saare achievements dikhenge, koi limit nahi
+$achievementLimit = 0;
+$achievementImgPrefix = "../../";
+include_once("../comp/achievement/achievement_section.php");
+?>
 
     <div class="gp-hero">
         <h1><i class="bi bi-images me-2"></i>Our Gallery</h1>
@@ -66,8 +75,10 @@ while ($row = $result->fetch_assoc()) { $photos[] = $row; }
         </div>
         <button class="gp-lb-nav gp-lb-next" id="gpLbNext"><i class="bi bi-chevron-right"></i></button>
     </div>
+    <?php include_once("../comp/footer/footer.php"); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="gallery_page.js"></script>
+    <script src="../comp/achievement/achievement.js"></script>
 </body>
 </html>

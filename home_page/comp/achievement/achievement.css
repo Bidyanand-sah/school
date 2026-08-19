@@ -1,0 +1,113 @@
+.ach-section {
+    padding: 40px 24px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ach-heading { text-align: center; margin-bottom: 24px; }
+.ach-heading h2 { color: #fff; font-size: 1.7rem; font-weight: 700; margin: 0 0 6px; }
+.ach-heading h2 i { color: #ffc857; margin-right: 8px; }
+.ach-heading p { color: #94a3b8; font-size: 0.9rem; margin: 0; }
+
+.ach-outer-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.ach-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 8px 4px 16px;
+    flex: 1 1 0;
+    min-width: 0;
+}
+.ach-row::-webkit-scrollbar { display: none; }
+
+.ach-card {
+    flex: 0 0 260px;
+    width: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #161d2c 0%, #10151f 100%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ach-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.5); }
+
+.ach-card.ach-pinned {
+    flex: 0 0 320px;
+    width: 320px;
+    border: 2px solid #ffc857;
+    box-shadow: 0 0 30px rgba(255,200,87,0.18);
+}
+
+.ach-ribbon {
+    position: absolute;
+    top: 14px; right: -34px;
+    background: #ffc857;
+    color: #412402;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 42px;
+    transform: rotate(40deg);
+    z-index: 3;
+}
+
+.ach-img-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #0a0f18;
+    overflow: hidden;
+}
+.ach-pinned .ach-img-wrap { aspect-ratio: 16 / 10; }
+.ach-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+}
+.ach-card:hover .ach-img-wrap img { transform: scale(1.06); }
+
+.ach-body { padding: 14px 16px 16px; }
+.ach-badge {
+    display: inline-block;
+    font-size: 0.66rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 30px;
+    background: rgba(255,200,87,0.15); color: #ffc857;
+    border: 1px solid rgba(255,200,87,0.3);
+}
+.ach-body h4 { margin: 8px 0 6px; font-size: 0.92rem; color: #fff; }
+.ach-pinned .ach-body h4 { font-size: 1.02rem; }
+.ach-body p { margin: 0; font-size: 0.76rem; color: #9aa4ba; line-height: 1.5; }
+.ach-pinned .ach-body p { font-size: 0.72rem; }
+
+.ach-empty {
+    text-align: center; padding: 50px 20px; color: #6b7386;
+}
+.ach-empty i { font-size: 2.6rem; display: block; margin-bottom: 10px; color: #3a4256; }
+
+.ach-arrow {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.05rem; color: #fff; cursor: pointer;
+    transition: all 0.2s; flex-shrink: 0;
+}
+.ach-arrow:hover { background: #ffc857; color: #412402; border-color: #ffc857; }
+
+@media (max-width: 576px) {
+    .ach-section { padding: 28px 14px 10px; }
+    .ach-card, .ach-card.ach-pinned { flex-basis: 200px; width: 200px; }
+    .ach-arrow { width: 34px; height: 34px; font-size: 0.9rem; }
+}

@@ -42,7 +42,7 @@ $totalPhotos = count($photos);
                 </button>
                 <small class="text-muted"><i class="bi bi-info-circle"></i> Hover a photo to edit / delete</small>
             </section>
-
+            <!-- gallery grid  -->
             <div class="gallery-backdrop">
                 <div class="gallery-grid" id="galleryGrid">
                     <?php if (empty($photos)): ?>

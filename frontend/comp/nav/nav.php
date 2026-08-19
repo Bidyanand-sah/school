@@ -17,15 +17,10 @@
             </div>
         </div>
 
-        <ul class="navbar-menu">
-            <li><a onclick="loadPage('home')"><i class="fas fa-home"></i> Home</a></li>
-            <li><a onclick="loadPage('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a onclick="loadPage('gallery')"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a onclick="loadPage('notice')"><i class="fas fa-bullhorn"></i> Notice</a></li>
-        </ul>
+        <div>Text</div>
 
         <div class="navbar-right">
-            <button class="login-btn" onclick="handleLogin()">
+            <button class="login-btn" >
                 <i class="fas fa-sign-in-alt"></i> Login
             </button>
         </div>

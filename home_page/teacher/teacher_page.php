@@ -57,6 +57,7 @@ function printAdminCard($data, $roleLabel) {
     <link rel="stylesheet" href="../comp/nav/nav.css">
     <link rel="stylesheet" href="../../frontend/admin/teacher/teacher.css">
     <link rel="stylesheet" href="teacher_page.css">
+    <link rel="stylesheet" href="../comp/footer/footer.css">
 </head>
 
 <body data-theme="light-blue">
@@ -137,6 +138,7 @@ function printAdminCard($data, $roleLabel) {
         </section>
 
     </div>
+    <?php include_once("../comp/footer/footer.php"); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="teacher_page.js"></script>

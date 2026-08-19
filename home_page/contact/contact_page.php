@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="contact_page.css">
     <link rel="stylesheet" href="../comp/nav/nav.css">
+    <link rel="stylesheet" href="../comp/footer/footer.css">
 </head>
 <body>
 <?php
@@ -94,6 +95,7 @@
 
     </div>
 </section>
+<?php include_once("../comp/footer/footer.php"); ?>
 
 <script src="contact_page.js"></script>
 </body>

@@ -17,12 +17,13 @@ include '../backend/con1.php';
 <link rel="stylesheet" href="about/about.css">
 <link rel="stylesheet" href="testimonial/testimonial_page.css">
 <link rel="stylesheet" href="comp/footer/footer.css">
+<link rel="stylesheet" href="comp/achievement/achievement.css">
 </head>
 <body>
 
 <?php include_once("comp/nav/nav.php"); ?>
 <?php include_once("comp/hero/hero.php"); ?>
-<?php include_once("about/about.php"); ?>
+<?php include_once("about/about_section.php"); ?>
 
 <section class="modules-preview">
   <div class="modules-inner">
@@ -53,11 +54,22 @@ include '../backend/con1.php';
   </div>
 </section>
 
+<?php
+
+$achievementLimit = 6;
+$achievementImgPrefix = "../";
+include_once("comp/achievement/achievement_section.php");
+?>
+
 <?php include_once("testimonial/testimonial_section.php"); ?>
 <?php include_once("comp/footer/footer.php"); ?>
 
 <script src="comp/nav/nav.js"></script>
 <script src="comp/hero/hero.js"></script>
+
+<script src="comp/achievement/achievement.js"></script>
+
 <script src="testimonial/testimonial_page.js"></script>
+
 </body>
 </html>

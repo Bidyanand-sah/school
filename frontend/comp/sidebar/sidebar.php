@@ -29,9 +29,9 @@
             <i class="fas fa-chalkboard-teacher"></i>
             <span>Teachers</span>
         </a>
-        <a class="menu-item" onclick="showSection('classes')">
+        <a class="menu-item" href="/sms_teacher/frontend/admin/achievement/achievement.php">
             <i class="fas fa-door-open"></i>
-            <span>Classes</span>
+            <span>Achievement</span>
         </a>
         <a class="menu-item" href="/sms_teacher/frontend/admin/gallery/gallery.php">
             <i class="fas fa-images"></i>
