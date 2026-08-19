@@ -1,0 +1,170 @@
+/* ============================================================
+   SIDEBAR.CSS — Universal Sidebar + LAYOUT ENGINE
+   (Ye file .main-container/.main-content ka layout bhi handle
+    karti hai — kisi bhi page pe sirf nav.css + sidebar.css link
+    karo, layout guaranteed sahi milega. Page ka apna CSS sirf
+    andar ke content ka design karega.)
+   ============================================================ */
+
+/* ---------- LAYOUT ENGINE (highest priority, page CSS ko override karta hai) ---------- */
+.main-container {
+    display: flex !important;
+    min-height: calc(100vh - var(--navbar-height)) !important;
+    width: 100% !important;
+}
+
+.main-content {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;   /* flex overflow bug fix — bina isके content bahar bhaagta hai */
+    width: auto !important;
+    background: var(--light-bg);
+    overflow-x: hidden;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    width: var(--sidebar-width) !important;
+    flex: 0 0 var(--sidebar-width) !important;   /* fixed width, kabhi shrink/grow na ho */
+    background: var(--sidebar-bg, #2c3e50);
+    color: white;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: sticky !important;
+    left: auto !important;
+    top: var(--navbar-height) !important;
+    height: calc(100vh - var(--navbar-height)) !important;
+    z-index: 100;
+}
+
+.sidebar.hidden {
+    width: 0 !important;
+    flex-basis: 0 !important;
+    min-width: 0;
+    overflow: hidden;
+    border: none;
+}
+
+/* ---------- Theme Selector ---------- */
+.theme-selector {
+    display: flex;
+    gap: 8px;
+    padding: 15px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.theme-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.theme-btn:hover { transform: scale(1.2); }
+.theme-btn.active { border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+.theme-btn.light-blue { background: linear-gradient(135deg, #667eea, #764ba2); }
+.theme-btn.yellow { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.theme-btn.neon-blue { background: linear-gradient(135deg, #0a192f, #112240); }
+
+/* ---------- Menu Items ---------- */
+.sidebar-menu { flex: 1; padding: 20px 0; }
+.menu-item {
+    padding: 14px 25px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    color: #bdc3c7;
+    text-decoration: none;
+    margin: 2px 0;
+}
+.menu-item:hover { background: rgba(255,255,255,0.1); border-left-color: var(--primary-color); color: white; }
+.menu-item.active { background: rgba(255,255,255,0.15); border-left-color: var(--primary-color); color: white; }
+.menu-item i { margin-right: 15px; width: 20px; text-align: center; font-size: 18px; }
+
+/* ---------- User Profile Footer ---------- */
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: auto;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 10px;
+}
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.user-info-sidebar { flex: 1; min-width: 0; }
+.user-info-sidebar h4 {
+    font-size: 14px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.user-info-sidebar p { font-size: 11px; opacity: 0.7; }
+
+.logout-btn {
+    width: 100%;
+    padding: 10px;
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+.logout-btn:hover { background: rgba(231, 76, 60, 0.3); }
+
+/* ---------- Scrollbar ---------- */
+.sidebar::-webkit-scrollbar { width: 5px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .main-container {
+        display: block !important;   /* mobile pe sidebar overlay, flex nahi chahiye */
+    }
+    .main-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    .sidebar {
+        position: fixed !important;
+        top: var(--navbar-height) !important;
+        left: 0 !important;
+        z-index: 1500 !important;
+        height: calc(100vh - var(--navbar-height)) !important;
+        width: var(--sidebar-width) !important;
+        flex-basis: auto !important;
+    }
+    .sidebar.hidden {
+        left: calc(var(--sidebar-width) * -1) !important;
+        width: var(--sidebar-width) !important;
+    }
+}
+
+.sidebar.no-transition {
+    transition: none !important;
+}

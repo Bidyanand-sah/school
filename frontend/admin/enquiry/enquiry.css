@@ -1,0 +1,97 @@
+* { box-sizing: border-box; }
+.enq-header {
+    background: linear-gradient(135deg, #1a2639, #2c3e50);
+    color: #fff;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.enq-header .brand { font-size: 1.4rem; font-weight: 700; }
+.enq-header .brand i { color: #ffc857; margin-right: 8px; }
+.enq-stats { display: flex; gap: 10px; }
+.stat-pill {
+    background: rgba(255,255,255,0.12);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+}
+.stat-pill.pending { background: rgba(255,200,87,0.2); color: #ffc857; }
+
+.enq-list { padding: 24px 28px; display: flex; flex-direction: column; gap: 14px; }
+
+.enq-card {
+    background: #fff;
+    border: 1px solid #edf2f7;
+    border-radius: 18px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    transition: all 0.2s;
+}
+.enq-card:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.07); }
+.enq-card.is-called { opacity: 0.65; background: #f8faf9; }
+
+.check-wrap { position: relative; display: inline-block; cursor: pointer; margin-top: 2px; }
+.check-wrap input { position: absolute; opacity: 0; width: 0; height: 0; }
+.checkmark {
+    width: 30px; height: 30px;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: transparent;
+    transition: all 0.2s;
+    background: #fff;
+}
+.check-wrap input:checked ~ .checkmark {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: #fff;
+}
+.check-wrap:hover .checkmark { border-color: #16a34a; }
+
+.enq-body { flex: 1; min-width: 0; }
+.enq-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.enq-name { font-weight: 700; font-size: 1.02rem; color: #0f172a; }
+.enq-badge { font-size: 0.68rem; font-weight: 700; padding: 3px 12px; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.4px; }
+.badge-pending { background: #fff4e0; color: #b45309; }
+.badge-called { background: #dcfce7; color: #15803d; }
+
+.enq-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.82rem; color: #64748b; margin-bottom: 8px; }
+.enq-meta i { margin-right: 5px; color: #1a2639; }
+
+.enq-message {
+    font-size: 0.85rem;
+    color: #334155;
+    background: #f8fafc;
+    border-left: 3px solid #cbd5e1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    line-height: 1.4;
+}
+
+.enq-delete {
+    background: rgba(239,68,68,0.08);
+    border: none;
+    color: #b91c1c;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.enq-delete:hover { background: #e53935; color: #fff; transform: scale(1.08); }
+
+.empty-state { text-align: center; padding: 60px 20px; color: #94a3b8; }
+.empty-state i { font-size: 2.8rem; display: block; margin-bottom: 12px; }
+
+@media (max-width: 600px) {
+    .enq-header { padding: 16px; }
+    .enq-list { padding: 16px; }
+    .enq-card { flex-wrap: wrap; }
+}

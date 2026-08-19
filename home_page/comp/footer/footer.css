@@ -1,0 +1,17 @@
+.site-footer{background:#12192b;color:#cbd5e1;padding:60px 24px 0;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:14px;}
+.footer-logo i{color:#ffc857;font-size:1.4rem;}
+.footer-logo em{font-style:normal;font-weight:300;opacity:.85;}
+.footer-brand p{font-size:.85rem;line-height:1.6;color:#94a3b8;max-width:280px;}
+.footer-social{display:flex;gap:10px;margin-top:16px;}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:#cbd5e1;text-decoration:none;transition:.25s;}
+.footer-social a:hover{background:#4a90e2;color:#fff;}
+.footer-col h4{color:#fff;font-size:.95rem;margin-bottom:16px;}
+.footer-col a{display:block;color:#94a3b8;text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:.2s;}
+.footer-col a:hover{color:#ffc857;}
+.footer-col p{font-size:.83rem;color:#94a3b8;margin-bottom:10px;line-height:1.5;}
+.footer-col p i{color:#4a90e2;margin-right:8px;width:16px;}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:20px 0;text-align:center;font-size:.8rem;color:#64748b;}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.footer-inner{grid-template-columns:1fr;}}
