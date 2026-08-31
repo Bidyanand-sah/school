@@ -1,4 +1,7 @@
 <?php
+    ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // home_page/testimonial/testimonial_page.php — public, read-only, sab reviews dikhata hai
 include '../backend/con1.php';
 

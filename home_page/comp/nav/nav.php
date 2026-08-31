@@ -28,16 +28,9 @@
             <li><a href="/sms_teacher/home_page/review/review_page.php">Review</a></li>
             <li><a href="/sms_teacher/home_page/testimonial/testimonial_page.php">Testimonial</a></li>
 
-            <!-- <li><a href="/sms_teacher/backend/login.php" class="nav-cta">Login</a></li> -->
+         <li><a href="/sms_teacher/backend/login/login.php" class="nav-cta">Login</a></li>
         </ul>
-    <ul class="nav-links" id="navLinks">
-    <div class="navbar-right">
-        <!-- <button class="login-btn nav-cta" onclick="handleLogin()">
-            <i class="fas fa-sign-in-alt"></i> Login
-        </button> -->
-        <li><a href="/sms_teacher/backend/login/login.php" class="nav-cta">Login</a></li>
-    </div>
-</ul>
+    
     </div>
 </nav>
 <!-- WhatsApp Floating Button -->

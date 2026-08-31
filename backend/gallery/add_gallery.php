@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: application/json');
 include '../con1.php';
+include '../comp/image_helper.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Invalid request method"]);
@@ -26,11 +28,13 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $uploadDir = __DIR__ . "/../../uploads/gallery/";
     if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
-    $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-    $fileName = uniqid("gallery_", true) . "." . $ext;
+    $fileName = uniqid("gallery_", true) . ".jpg";
+
+    
     $targetPath = $uploadDir . $fileName;
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+        if (compressAndSaveImage($_FILES['image']['tmp_name'], $targetPath)) {
+
         $imgPath = "uploads/gallery/" . $fileName;
     } else {
         echo json_encode(["success" => false, "message" => "Image upload failed"]);

@@ -2,7 +2,6 @@
 /* ============================================================
    ACHIEVEMENTS — same pattern as photos above
    ============================================================ */
-
 document.getElementById('saveAchievementBtn').addEventListener('click', function () {
     const imageFile = document.getElementById('achImage').files[0];
     const title = document.getElementById('achTitle').value.trim();
@@ -30,23 +29,32 @@ document.getElementById('saveAchievementBtn').addEventListener('click', function
     btn.disabled = true;
     btn.innerHTML = 'Saving...';
 
-    fetch('../../../backend/achievement/add_achievement.php', { method: 'POST', body: formData })
+   fetch('../../../backend/achievement/add_achievement.php', { method: 'POST', body: formData })
         .then(res => res.json())
         .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert(data.message);
-                btn.disabled = false;
-                btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Achievement';
-            }
+           if (data.success) {
+              location.reload();
+           } else {
+              // alert(data.message);
+               console.log('error in then section to didnot save ');
+               btn.disabled = false;
+              btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Achievement';
+           }
         })
-        .catch(err => {
-            alert('Something went wrong: ' + err.message);
-            btn.disabled = false;
-            btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Achievement';
-        });
+       .catch(err => {
+          //alert('Something went wrong: ' + err.message);
+       console.log('error in catch block')
+           btn.disabled = false;
+           btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Achievement';
+      });
+    
 });
+
+
+//yaha se new code hai
+
+//or yaha khatam hai wo new code
+
 
 document.addEventListener('click', function (e) {
     const deleteBtn = e.target.closest('.btn-delete-ach');
