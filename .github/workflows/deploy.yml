@@ -15,7 +15,7 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp://ftpupload.net
+          server: ftpupload.net
           username: if0_42715687
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /htdocs/sms_teacher/
