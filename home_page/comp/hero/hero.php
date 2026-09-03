@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +8,38 @@
   <link rel="stylesheet" href="hero.css">
 </head>
 <body>
-  
-<section class="hero" id="home">
-  <div class="hero-bg-shapes"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <span class="hero-badge"><i class="fas fa-star"></i> Admissions Open 2026–27</span>
-      <h1>Shaping <span class="text-gradient">Bright Futures</span>,<br>One Student at a Time</h1>
-      <p>Bright Future International School mein hum har bacche ko sirf syllabus nahi, balki zindagi ke liye taiyar karte hain — quality education, caring teachers aur ek surakshit environment ke saath.</p>
-      <div class="hero-actions">
-        <a href="/sms_teacher/home_page/contact/contact_page.php" class="btn-primary">Admission Enquiry <i class="fas fa-arrow-right"></i></a>
-        <a href="#about" class="btn-outline">Know More</a>
-      </div>
+
+<!--
+  MERGED VERSION — purana rich design (badge, buttons, animated stats)
+  + naya dynamic content. Heading, Subtext, Background Image, Badge
+  Text, aur 4 Stats (value+label) — SAB admin panel > Site Settings >
+  Hero tab se getContent() ke through aa rahe hain. Koi text yahan
+  hardcoded nahi hai.
+-->
+<?php $heroBg = getContent('hero_bg'); ?>
+<section class="hero-section<?= $heroBg ? '' : ' hero-section-default' ?>"
+    <?php if ($heroBg): ?>style="background-image:url('<?= htmlspecialchars($heroBg) ?>');"<?php endif; ?>>
+    <div class="hero-badge"><i class="fas fa-star"></i> <?= htmlspecialchars(getContent('hero_badge_text')) ?></div>
+
+    <div class="hero-content">
+        <h1><?= htmlspecialchars(getContent('hero_heading')) ?></h1>
+        <p><?= htmlspecialchars(getContent('hero_subtext')) ?></p>
+        <div class="hero-actions">
+            <a href="/sms_teacher/home_page/contact/contact_page.php" class="btn-primary">
+                Admission Enquiry <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#about" class="btn-outline">Know More</a>
+        </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-image-card">
-        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Students at school">
-      </div>
+
+    <div class="hero-stats">
+        <div class="stat-box"><div class="num" data-target="<?= htmlspecialchars(getContent('stat1_value')) ?>">0</div><div class="label"><?= htmlspecialchars(getContent('stat1_label')) ?></div></div>
+        <div class="stat-box"><div class="num" data-target="<?= htmlspecialchars(getContent('stat2_value')) ?>">0</div><div class="label"><?= htmlspecialchars(getContent('stat2_label')) ?></div></div>
+        <div class="stat-box"><div class="num" data-target="<?= htmlspecialchars(getContent('stat3_value')) ?>">0</div><div class="label"><?= htmlspecialchars(getContent('stat3_label')) ?></div></div>
+        <div class="stat-box"><div class="num" data-target="<?= htmlspecialchars(getContent('stat4_value')) ?>">0</div><div class="label"><?= htmlspecialchars(getContent('stat4_label')) ?></div></div>
     </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat-box"><div class="num" data-count="1200" data-suffix="+">0</div><div class="label">Students</div></div>
-    <div class="stat-box"><div class="num" data-count="85" data-suffix="+">0</div><div class="label">Teachers</div></div>
-    <div class="stat-box"><div class="num" data-count="15" data-suffix="+">0</div><div class="label">Years of Excellence</div></div>
-    <div class="stat-box"><div class="num" data-count="40" data-suffix="+">0</div><div class="label">Activities & Clubs</div></div>
-  </div>
 </section>
+
 <script src="hero.js"></script>
 </body>
 </html>

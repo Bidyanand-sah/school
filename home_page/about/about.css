@@ -1,12 +1,69 @@
-.about-section{padding:80px 24px;background:#f8fafc;}
-.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;}
-.about-media img{width:100%;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.12);height:420px;object-fit:cover;}
-.section-tag{display:inline-block;background:#e6f0fd;color:#4a90e2;padding:6px 16px;border-radius:30px;font-size:.8rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px;}
-.about-content h2{font-size:2rem;color:#0f172a;margin-bottom:16px;font-weight:800;}
-.about-content>p{color:#475569;line-height:1.75;margin-bottom:30px;}
-.about-points{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-.point{display:flex;gap:14px;align-items:flex-start;}
-.point i{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,#1a2639,#2c3e50);color:#ffc857;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-.point h4{font-size:.95rem;color:#0f172a;margin-bottom:4px;}
-.point p{font-size:.82rem;color:#64748b;line-height:1.5;}
-@media(max-width:900px){.about-inner{grid-template-columns:1fr;}.about-media img{height:280px;}.about-points{grid-template-columns:1fr;}}
+/* ============================================================
+   ABOUT.CSS — Merged: purana rich design (image + 4 icon points)
+   ab poora content admin panel se dynamic hai (about_section.php)
+   ============================================================ */
+.about-section{ padding:80px 24px; background:#f8fafc; }
+.about-inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-media img{
+    width:100%;
+    border-radius:24px;
+    box-shadow:0 20px 50px rgba(0,0,0,.12);
+    height:420px;
+    object-fit:cover;
+    display:block;
+}
+/* Jab tak admin koi image upload nahi karta, styled placeholder dikhega */
+.about-placeholder{
+    width:100%;
+    height:420px;
+    border-radius:24px;
+    background:linear-gradient(135deg,#1a2639,#2c3e50);
+    color:#ffc857;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:4rem;
+    box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+.section-tag{
+    display:inline-block;
+    background:#e6f0fd;
+    color:#4a90e2;
+    padding:6px 16px;
+    border-radius:30px;
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+}
+.about-content h2{ font-size:2rem; color:#0f172a; margin-bottom:16px; font-weight:800; }
+.about-content>p{ color:#475569; line-height:1.75; margin-bottom:30px; }
+
+.about-points{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.point{ display:flex; gap:14px; align-items:flex-start; }
+.point i{
+    width:44px; height:44px; flex-shrink:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#1a2639,#2c3e50);
+    color:#ffc857;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+}
+.point h4{ font-size:.95rem; color:#0f172a; margin-bottom:4px; }
+.point p{ font-size:.82rem; color:#64748b; line-height:1.5; }
+
+@media(max-width:900px){
+    .about-inner{ grid-template-columns:1fr; }
+    .about-media img, .about-placeholder{ height:280px; }
+    .about-points{ grid-template-columns:1fr; }
+}

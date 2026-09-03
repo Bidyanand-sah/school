@@ -49,6 +49,10 @@
             <i class="fas fa-address-card"></i>
             <span>Testimonial</span>
         </a>
+        <a class="menu-item" href="/sms_teacher/frontend/admin/site_settings/index.php">
+    <i class="bi bi-gear-fill"></i>
+    <span>Site Settings</span>
+</a>
     </div>
 
     <!-- User Profile Footer -->

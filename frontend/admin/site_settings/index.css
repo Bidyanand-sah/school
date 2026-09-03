@@ -1,0 +1,225 @@
+/* ============================================================
+   SITE SETTINGS — Admin Panel (polished)
+   ============================================================ */
+
+.main-content { padding: 24px !important; background: #f4f7fc; min-height: 100vh; }
+
+/* ===== HEADER ===== */
+.ss-header {
+    background: linear-gradient(135deg, #1a2639 0%, #2c3e50 100%);
+    color: #fff;
+    padding: 26px 30px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(26,38,57,0.18);
+    position: relative;
+    overflow: hidden;
+}
+.ss-header::before{
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 85% 20%, rgba(255,200,87,0.12), transparent 55%);
+    pointer-events:none;
+}
+.ss-header .brand { font-size: 1.65rem; font-weight: 800; position:relative; }
+.ss-header .brand i { color: #ffc857; margin-right: 10px; }
+.ss-subtitle { color: #cbd5e1; margin: 6px 0 0 0; font-size: 0.92rem; position:relative; }
+
+/* ===== TABS ===== */
+.ss-tabs {
+    display: flex;
+    gap: 6px;
+    background: #fff;
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid #e9edf3;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+.ss-tab {
+    padding: 11px 22px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.ss-tab:hover { background: #f1f5f9; color: #1a2639; }
+.ss-tab.active {
+    background: linear-gradient(135deg, #1a2639, #2c3e50);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(26,38,57,0.28);
+}
+.ss-tab i { margin-right: 6px; }
+
+/* ===== CARDS ===== */
+.ss-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 30px 32px;
+    border: 1px solid #e9edf3;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    max-width: 760px;
+}
+.ss-card h3 {
+    color: #0f172a;
+    margin-bottom: 22px;
+    font-size: 1.22rem;
+    font-weight: 700;
+    display:flex; align-items:center; gap:8px;
+    padding-bottom:14px;
+    border-bottom: 1px solid #eef2f7;
+}
+.ss-card h3 i {
+    color: #ffc857;
+    background:#1a2639;
+    width:34px; height:34px;
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.95rem;
+}
+.ss-card h4 {
+    color: #1a2639;
+    margin: 20px 0 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    display:flex; align-items:center; gap:6px;
+}
+
+/* ===== FIELDS ===== */
+.field { margin-bottom: 16px; }
+.field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+.field label i { color:#4a90e2; margin-right:4px; width:14px; }
+.field input[type="text"], .field textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #dce3ec;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    font-family: inherit;
+    background: #fafcff;
+}
+.field input[type="text"]:focus, .field textarea:focus {
+    outline: none;
+    border-color: #1a2639;
+    box-shadow: 0 0 0 4px rgba(26,38,57,0.08);
+    background: #fff;
+}
+.field textarea { resize: vertical; min-height: 90px; line-height:1.5; }
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.field-row input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #dce3ec;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    background: #fafcff;
+    transition: all 0.2s;
+}
+.field-row input:focus { outline: none; border-color: #1a2639; box-shadow: 0 0 0 4px rgba(26,38,57,0.08); background:#fff; }
+
+/* ===== IMAGE UPLOAD ROW ===== */
+.img-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    background:#f8fafc;
+    border:1px dashed #dce3ec;
+    border-radius:12px;
+    padding:12px 14px;
+}
+.preview-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #e9edf3;
+    background:#fff;
+}
+.file-input { max-width: 200px; font-size:0.82rem; }
+.file-name { font-size: 0.8rem; color: #94a3b8; }
+
+hr { border: none; border-top: 1px solid #eef2f7; margin: 22px 0; }
+
+/* ===== ABOUT: Highlight Point boxes ===== */
+.ss-subsection { margin-top: 6px; }
+.ss-point-box {
+    position: relative;
+    background: #f8fafc;
+    border: 1px solid #e9edf3;
+    border-radius: 14px;
+    padding: 18px 18px 4px 60px;
+    margin-bottom: 14px;
+    transition: border-color .2s, box-shadow .2s;
+}
+.ss-point-box:hover { border-color:#c7d2e0; box-shadow:0 4px 14px rgba(0,0,0,0.04); }
+.ss-point-icon {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #1a2639, #2c3e50);
+    color: #ffc857;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+.ss-point-box .field { margin-bottom: 12px; }
+
+/* ===== SAVE ===== */
+.ss-save-row {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 760px;
+}
+#saveAllBtn {
+    background: linear-gradient(135deg, #1a2639, #2c3e50);
+    color: #fff;
+    border: none;
+    padding: 13px 38px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 4px 16px rgba(26,38,57,0.3);
+}
+#saveAllBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,38,57,0.4); }
+#saveAllBtn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+#saveAllBtn i { margin-right: 8px; }
+
+#saveMsg { font-size: 0.9rem; font-weight: 600; }
+#saveMsg.success { color: #16a34a; }
+#saveMsg.error { color: #dc2626; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 576px) {
+    .ss-card { padding: 18px; max-width:100%; }
+    .field-row { grid-template-columns: 1fr; }
+    .ss-tab { padding: 8px 14px; font-size: 0.8rem; }
+    .ss-point-box { padding-left: 16px; }
+    .ss-point-icon { position:static; margin-bottom:10px; }
+}

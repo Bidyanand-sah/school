@@ -1,23 +1,134 @@
-.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#1a2639 0%,#2c3e50 55%,#233a52 100%);color:#fff;padding:90px 24px 60px;}
-.hero-bg-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.hero-bg-shapes::before,.hero-bg-shapes::after{content:'';position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;}
-.hero-bg-shapes::before{width:380px;height:380px;background:#4a90e2;top:-120px;right:-80px;}
-.hero-bg-shapes::after{width:300px;height:300px;background:#ffc857;bottom:-100px;left:-60px;opacity:.18;}
-.hero-inner{position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,200,87,.12);color:#ffc857;padding:8px 18px;border-radius:30px;font-size:.8rem;font-weight:600;border:1px solid rgba(255,200,87,.3);margin-bottom:20px;}
-.hero-text h1{font-size:2.6rem;line-height:1.25;margin:0 0 18px;font-weight:800;}
-.text-gradient{background:linear-gradient(120deg,#ffc857,#4a90e2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-text p{color:#cbd5e1;font-size:1.02rem;line-height:1.7;max-width:520px;margin-bottom:30px;}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
-.btn-primary{background:linear-gradient(135deg,#4a90e2,#357abd);color:#fff;text-decoration:none;padding:14px 30px;border-radius:50px;font-weight:600;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(74,144,226,.35);transition:.25s;}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(74,144,226,.45);}
-.btn-outline{border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;padding:14px 30px;border-radius:50px;font-weight:600;transition:.25s;}
-.btn-outline:hover{background:rgba(255,255,255,.1);}
-.hero-visual{display:flex;justify-content:center;}
-.hero-image-card{width:100%;max-width:420px;border-radius:26px;overflow:hidden;border:6px solid rgba(255,255,255,.08);box-shadow:0 30px 60px rgba(0,0,0,.35);}
-.hero-image-card img{width:100%;display:block;height:420px;object-fit:cover;}
-.hero-stats{position:relative;max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.stat-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px;text-align:center;backdrop-filter:blur(6px);}
-.stat-box .num{font-size:2rem;font-weight:800;color:#ffc857;}
-.stat-box .label{font-size:.85rem;color:#cbd5e1;margin-top:4px;}
-@media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center;}.hero-text p{margin-left:auto;margin-right:auto;}.hero-actions{justify-content:center;}.hero-stats{grid-template-columns:repeat(2,1fr);}.hero-text h1{font-size:2.1rem;}}
+/* ============================================================
+   HERO.CSS — Merged: purana rich design + naya dynamic hero
+   Ek hi .hero-section element: background-image PHP se inline aata
+   hai, dark gradient tint ::before se lagta hai (isliye kabhi
+   height-mismatch/peeking-border wala glitch nahi hoga).
+   ============================================================ */
+
+.hero-section{
+    position:relative;
+    background-color:#1a2639;   /* image load hone se pehle fallback */
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    padding:110px 24px 90px;
+    overflow:hidden;
+    color:#fff;
+    text-align:center;
+}
+
+/* Jab tak admin koi hero background image upload nahi karta,
+   ye branded gradient dikhega — koi broken/missing image nahi */
+.hero-section-default{
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(255,200,87,.10), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(74,144,226,.18), transparent 50%),
+        linear-gradient(135deg, #1a2639 0%, #223a54 50%, #2c3e50 100%);
+}
+
+/* Dark tint — poore section ke exact barabar, kabhi gap nahi chhodega */
+.hero-section::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(160deg,rgba(26,38,57,.72) 0%,rgba(44,62,80,.60) 55%,rgba(35,58,82,.72) 100%);
+    z-index:1;
+}
+
+/* Content hamesha tint ke UPAR (z-index se) */
+.hero-badge,
+.hero-content,
+.hero-stats{
+    position:relative;
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,200,87,.15);
+    color:#ffc857;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:.8rem;
+    font-weight:600;
+    border:1px solid rgba(255,200,87,.35);
+    margin-bottom:24px;
+    backdrop-filter:blur(4px);
+}
+
+.hero-content{
+    max-width:720px;
+    margin:0 auto;
+}
+.hero-content h1{
+    font-size:2.6rem;
+    font-weight:800;
+    line-height:1.25;
+    margin:0 0 18px;
+}
+.hero-content p{
+    color:#e2e8f0;
+    font-size:1.05rem;
+    line-height:1.7;
+    margin-bottom:32px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.btn-primary{
+    background:linear-gradient(135deg,#4a90e2,#357abd);
+    color:#fff;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:50px;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 8px 24px rgba(74,144,226,.35);
+    transition:.25s;
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(74,144,226,.45); color:#fff; }
+.btn-outline{
+    border:1px solid rgba(255,255,255,.4);
+    color:#fff;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:50px;
+    font-weight:600;
+    transition:.25s;
+}
+.btn-outline:hover{ background:rgba(255,255,255,.12); }
+
+.hero-stats{
+    max-width:1000px;
+    margin:56px auto 0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.stat-box{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    padding:20px;
+    backdrop-filter:blur(6px);
+}
+.stat-box .num{ font-size:1.9rem; font-weight:800; color:#ffc857; }
+.stat-box .label{ font-size:.82rem; color:#e2e8f0; margin-top:4px; }
+
+@media(max-width:900px){
+    .hero-content h1{ font-size:2.1rem; }
+    .hero-stats{ grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:600px){
+    .hero-section{ padding:80px 18px 60px; }
+    .hero-content h1{ font-size:1.7rem; }
+    .hero-content p{ font-size:.95rem; }
+}

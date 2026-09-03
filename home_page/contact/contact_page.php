@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../../backend/site_content/site_content_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +16,8 @@
     include_once("../comp/nav/nav.php");
   ?>
 <section class="contact-hero">
-    <h1><i class="bi bi-envelope-heart-fill"></i> Get in Touch</h1>
-    <p>Have a question about admissions or school life? We'd love to hear from you.</p>
+    <h1><?= htmlspecialchars(getContent('contact_heading')) ?></h1>
+    <p><?= htmlspecialchars(getContent('contact_subtext')) ?></p>
 </section>
 
 <section class="contact-wrap">
@@ -51,42 +52,42 @@
         <!-- RIGHT: INFO + MAP -->
         <div class="contact-info-side">
             <div class="info-card">
-                <h3>Bright Future International School</h3>
+                <h3><?= htmlspecialchars(getContent('site_name')) ?></h3>
                 <p class="info-sub">We're here to help with anything you need.</p>
 
                 <div class="info-row">
                     <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
                     <div>
                         <strong>Address</strong>
-                        <p>Patna, Bihar, India</p>
+                        <p><?= htmlspecialchars(getContent('contact_address')) ?></p>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
                     <div>
                         <strong>Phone</strong>
-                        <p>+91 98765 43210</p>
+                        <p><?= htmlspecialchars(getContent('contact_phone')) ?></p>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon"><i class="bi bi-envelope-fill"></i></div>
                     <div>
                         <strong>Email</strong>
-                        <p>info@brightfuture.edu</p>
+                        <p><?= htmlspecialchars(getContent('contact_email')) ?></p>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon"><i class="bi bi-clock-fill"></i></div>
                     <div>
                         <strong>Working Hours</strong>
-                        <p>Mon – Sat, 8:00 AM – 3:00 PM</p>
+                        <p><?= htmlspecialchars(getContent('contact_hours')) ?></p>
                     </div>
                 </div>
             </div>
 
             <div class="map-card">
                 <iframe
-                    src="https://www.google.com/maps?q=Patna,Bihar&output=embed"
+                    src="<?= htmlspecialchars(getContent('contact_map_link')) ?>"
                     width="100%" height="100%" style="border:0;"
                     allowfullscreen="" loading="lazy">
                 </iframe>

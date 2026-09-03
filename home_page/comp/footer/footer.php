@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,39 +8,72 @@
   <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-  
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-col footer-brand">
-      <div class="footer-logo"><i class="fas fa-graduation-cap"></i> Bright Future <em>International School</em></div>
-      <p>Quality education, strong values aur bright future — teeno ek jagah.</p>
-      <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-      </div>
+
+<!--
+  MERGED VERSION — purana rich design (logo icon, social media icons,
+  columns) + naya dynamic content. Brand, Tagline, 4 Quick Links,
+  Social Links, Address/Phone/Email, Copyright — SAB admin panel >
+  Site Settings se getContent() ke through aa rahe hain.
+  Social icon tabhi dikhega jab admin uska URL bhare — khaali ho to
+  woh icon hide ho jayega (broken "#" link nahi dikhega).
+-->
+<footer class="footer">
+    <div class="footer-inner">
+
+        <div class="footer-col footer-brand">
+            <div class="footer-logo">
+                <?php if (getContent('site_logo')): ?>
+                    <img src="<?= htmlspecialchars(getContent('site_logo')) ?>" alt="logo">
+                <?php else: ?>
+                    <i class="fas fa-graduation-cap"></i>
+                <?php endif; ?>
+                <span><?= htmlspecialchars(getContent('footer_brand')) ?></span>
+            </div>
+            <p><?= htmlspecialchars(getContent('footer_tagline')) ?></p>
+
+            <?php
+            $socials = [
+                ['url' => getContent('footer_social_facebook'),  'icon' => 'fab fa-facebook-f'],
+                ['url' => getContent('footer_social_instagram'), 'icon' => 'fab fa-instagram'],
+                ['url' => getContent('footer_social_youtube'),   'icon' => 'fab fa-youtube'],
+                ['url' => getContent('footer_social_twitter'),   'icon' => 'fab fa-twitter'],
+            ];
+            $hasAnySocial = false;
+            foreach ($socials as $s) {
+                if (!empty($s['url'])) { $hasAnySocial = true; break; }
+            }
+            ?>
+            <?php if ($hasAnySocial): ?>
+                <div class="footer-social">
+                    <?php foreach ($socials as $s): if (!empty($s['url'])): ?>
+                        <a href="<?= htmlspecialchars($s['url']) ?>" target="_blank" rel="noopener noreferrer">
+                            <i class="<?= $s['icon'] ?>"></i>
+                        </a>
+                    <?php endif; endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="<?= htmlspecialchars(getContent('footer_link1_url')) ?>"><?= htmlspecialchars(getContent('footer_link1_text')) ?></a>
+            <a href="<?= htmlspecialchars(getContent('footer_link2_url')) ?>"><?= htmlspecialchars(getContent('footer_link2_text')) ?></a>
+            <a href="<?= htmlspecialchars(getContent('footer_link3_url')) ?>"><?= htmlspecialchars(getContent('footer_link3_text')) ?></a>
+            <a href="<?= htmlspecialchars(getContent('footer_link4_url')) ?>"><?= htmlspecialchars(getContent('footer_link4_text')) ?></a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars(getContent('footer_address')) ?></p>
+            <p><i class="fas fa-phone"></i> <?= htmlspecialchars(getContent('footer_phone')) ?></p>
+            <p><i class="fas fa-envelope"></i> <?= htmlspecialchars(getContent('footer_email')) ?></p>
+        </div>
+
     </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <a href="/sms_teacher/home_page/index.php">Home</a>
-      <a href="/sms_teacher/home_page/about/about.php">About Us</a>
-      <a href="/sms_teacher/home_page/teacher/teacher_page.php">Teachers</a>
-      <a href="/sms_teacher/home_page/gallery/gallery_page.php">Gallery</a>
+    <div class="footer-bottom">
+        <p><?= htmlspecialchars(getContent('footer_copyright')) ?></p>
     </div>
-    <div class="footer-col">
-      <h4>More</h4>
-      <a href="/sms_teacher/home_page/notice/notice_page.php">Notice Board</a>
-      <a href="/sms_teacher/home_page/contact/contact_page.php">Contact Us</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p><i class="fas fa-map-marker-alt"></i> School Address Line, City, State</p>
-      <p><i class="fas fa-phone"></i> +91 00000 00000</p>
-      <p><i class="fas fa-envelope"></i> info@brightfutureschool.edu</p>
-    </div>
-  </div>
-  <div class="footer-bottom">&copy; <?= date('Y') ?> Bright Future International School. All rights reserved.</div>
 </footer>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +12,18 @@
 
 <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-        <a href="/sms_teacher/home_page/index.php" class="nav-brand">
+        <!-- <a href="/sms_teacher/home_page/index.php" class="nav-brand">
             <i class="fas fa-graduation-cap"></i>
             <span>Bright Future <em>International School</em></span>
-        </a>
+        </a> -->
+     <a href="/sms_teacher/home_page/index.php" class="nav-brand">
+    <?php if (getContent('site_logo')): ?>
+        <img src="<?= getContent('site_logo') ?>" style="height:32px;width:32px;border-radius:6px;object-fit:cover;">
+    <?php else: ?>
+        <i class="fas fa-graduation-cap"></i>
+    <?php endif; ?>
+    <span><?= htmlspecialchars(getContent('site_name')) ?></span>
+</a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
@@ -34,10 +43,16 @@
     </div>
 </nav>
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919876543210?text=Hi%2C%20mujhe%20admission%20ke%20baare%20mein%20jaankari%20chahiye"
+<!-- <a href="https://wa.me/919876543210?text=Hi%2C%20mujhe%20admission%20ke%20baare%20mein%20jaankari%20chahiye"
+   class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a> -->
+
+<a href="https://wa.me/<?= htmlspecialchars(getContent('whatsapp_number')) ?>?text=<?= urlencode(getContent('whatsapp_message')) ?>"
    class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
+
 <script src="nav.js"></script>
 </body>
 </html>
