@@ -1,0 +1,771 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1788427766746,
+    "data": [
+        {
+            "type": "folder",
+            "name": "backend"
+        },
+        {
+            "type": "folder",
+            "name": "frontend"
+        },
+        {
+            "type": "folder",
+            "name": "home_page"
+        },
+        {
+            "type": "folder",
+            "name": "mysql"
+        },
+        {
+            "type": "folder",
+            "name": "backend/achievement"
+        },
+        {
+            "type": "folder",
+            "name": "backend/comp"
+        },
+        {
+            "type": "folder",
+            "name": "backend/enquiry"
+        },
+        {
+            "type": "folder",
+            "name": "backend/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "backend/login"
+        },
+        {
+            "type": "file",
+            "name": "backend/logout.php",
+            "size": 125,
+            "hash": "f957e0977c8b82d28ff057f0f4090093c74d2fd8a7387be88cd853e7ef34228c"
+        },
+        {
+            "type": "folder",
+            "name": "backend/notice"
+        },
+        {
+            "type": "folder",
+            "name": "backend/site_content"
+        },
+        {
+            "type": "folder",
+            "name": "backend/teacher"
+        },
+        {
+            "type": "folder",
+            "name": "backend/testimonial"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/about"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/comp"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/contact"
+        },
+        {
+            "type": "file",
+            "name": "home_page/hash_generate.php",
+            "size": 204,
+            "hash": "a831740a2c49f9a8ef646281e504ea61558ff7c4f8b08e6fb27d005e3ce77c43"
+        },
+        {
+            "type": "file",
+            "name": "home_page/index.php",
+            "size": 2993,
+            "hash": "95f30923b9d4cb9adea357ef91f22faf7f3dac5fda37d355b3dd94a6a6ac0cc2"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/notice"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/review"
+        },
+        {
+            "type": "file",
+            "name": "home_page/style.css",
+            "size": 1316,
+            "hash": "85d5f43085a55127e0ca17d733f0e7ca18000e60a0b227023bf4448b55b746d3"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/teacher"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/testimonial"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/comp"
+        },
+        {
+            "type": "file",
+            "name": "mysql/sms_db.sql",
+            "size": 9418,
+            "hash": "0472e35f06757a57e820e75af1ac2ed185578f3590cd1c09b6609b527ac26c5d"
+        },
+        {
+            "type": "file",
+            "name": "backend/achievement/add_achievement.php",
+            "size": 2416,
+            "hash": "60e2db5d1db18710cb72e4295419848d959296dca74390c331d39569d2e673af"
+        },
+        {
+            "type": "file",
+            "name": "backend/achievement/update_achievement.php",
+            "size": 2836,
+            "hash": "548111e4037042d21c7f8d0b7beb56098733ab8398675c77b57c06a4ee35764a"
+        },
+        {
+            "type": "file",
+            "name": "backend/achievement/delete_achievement.php",
+            "size": 1146,
+            "hash": "53f5b4c842c5246cb6c5713bf528fb3d9a72d58e82b048e61131805f938246a2"
+        },
+        {
+            "type": "file",
+            "name": "backend/comp/gd_check.php",
+            "size": 20,
+            "hash": "9c187470da5b287bf03552bcc36ef74d3a636125aa7e8492f64c3ef89c046ee3"
+        },
+        {
+            "type": "file",
+            "name": "backend/comp/image_helper.php",
+            "size": 2105,
+            "hash": "24a0732a2d1393594b1ffb5d40db71e260bb71a1715b2aa170c0dc02c13ffbd3"
+        },
+        {
+            "type": "file",
+            "name": "backend/enquiry/add_enquiry.php",
+            "size": 1096,
+            "hash": "31962c9bf3ee933be73e30cc284a00d1e63d68165eebdf2dac68aab50bdfbfd1"
+        },
+        {
+            "type": "file",
+            "name": "backend/enquiry/delete_enquiry.php",
+            "size": 725,
+            "hash": "4f616b6e4e7b2ffa5ad2b775cb4ff6bbd0c2d9f88b8d1d0df4d460159ab6c4f4"
+        },
+        {
+            "type": "file",
+            "name": "backend/enquiry/toggle_called.php",
+            "size": 1236,
+            "hash": "3444c8aa096d01b6b7b2da97838cdf6378881d1169bee7d14e205590bb0dd42c"
+        },
+        {
+            "type": "file",
+            "name": "backend/gallery/add_gallery.php",
+            "size": 1829,
+            "hash": "52aa28352bb46c77df4fb1c66b6ade9b72f17ba14343e19c52c4995dc9878069"
+        },
+        {
+            "type": "file",
+            "name": "backend/gallery/delete_gallery.php",
+            "size": 1118,
+            "hash": "e9eb0fb81d07e0e3f05bfcceb705df0513054b9a104787a37a0cf856e679afc4"
+        },
+        {
+            "type": "file",
+            "name": "backend/gallery/update_gallery.php",
+            "size": 2349,
+            "hash": "0c2ba5ecb2fa0657ac612d485eadb5811cbc6feea02fb6374351b7aa73bbca0a"
+        },
+        {
+            "type": "file",
+            "name": "backend/login/check_login.php",
+            "size": 1204,
+            "hash": "bb442ab10e49795a245363cf5a5de7ca37d0402fe78be2bc01e849e71b9e86d6"
+        },
+        {
+            "type": "file",
+            "name": "backend/login/login.css",
+            "size": 3356,
+            "hash": "4425e7906560f7595d771689a4a5b87fc4d439af98e4cfd0be214fc0e43a78f6"
+        },
+        {
+            "type": "file",
+            "name": "backend/login/login.js",
+            "size": 1437,
+            "hash": "44f170a30a67534d197f409825d7ecbf345ef0a836972cfa5e56917ea5086275"
+        },
+        {
+            "type": "file",
+            "name": "backend/login/login.php",
+            "size": 1792,
+            "hash": "1d1340126cdbcbd635ec9c9d0b959d019a771e42d65e26ba618a8bbd4372e607"
+        },
+        {
+            "type": "file",
+            "name": "backend/notice/add_notice.php",
+            "size": 2078,
+            "hash": "47be56a34542846d522d36058630c88224ab2a6ed00d59a051b1ee5b006cf3f6"
+        },
+        {
+            "type": "file",
+            "name": "backend/notice/delete_notice.php",
+            "size": 1119,
+            "hash": "1f4ba251cdfd188eaf81ef10e18b0e863bc775ed5b87d6d02d06bdfa493899ea"
+        },
+        {
+            "type": "file",
+            "name": "backend/notice/toggle_pin_notice.php",
+            "size": 1097,
+            "hash": "5864570f7bc10da65fe647db2f874f574570343ddca24bedf7c1c17dc794f37a"
+        },
+        {
+            "type": "file",
+            "name": "backend/notice/update_notice.php",
+            "size": 2600,
+            "hash": "fba1b4da1d408afb6c0c34603add070d162de25f713142f86617969b6f6ce7b7"
+        },
+        {
+            "type": "folder",
+            "name": "backend/site_content/data"
+        },
+        {
+            "type": "file",
+            "name": "backend/site_content/site_content_helper.php",
+            "size": 410,
+            "hash": "2dc3f5bc1b10c198b5b5bee39608789c88a4c439305f602085977070a028335c"
+        },
+        {
+            "type": "file",
+            "name": "backend/site_content/update_site_content.php",
+            "size": 3342,
+            "hash": "2c3a5ade354151320686a3f82b1cb773e95e7b4364040e0ca654990b2a02ba05"
+        },
+        {
+            "type": "file",
+            "name": "backend/teacher/add_teacher.php",
+            "size": 3749,
+            "hash": "c8d80fbefe481cecbf8929a68f0103ff477ce53d4ce6dcf279587dfeab578dd5"
+        },
+        {
+            "type": "file",
+            "name": "backend/teacher/delete_teacher.php",
+            "size": 1390,
+            "hash": "7ebf96f2a6b2acc34aab345a7674ce8ca6a445e1fab2488b442687e6615a0d34"
+        },
+        {
+            "type": "file",
+            "name": "backend/teacher/get_teacher.php",
+            "size": 533,
+            "hash": "e505313696027ac82eed73ef1f316db1fb2d7e4f5a6356c53d5dbacc200608cb"
+        },
+        {
+            "type": "file",
+            "name": "backend/teacher/update_teacher.php",
+            "size": 3725,
+            "hash": "387e77b1b3ce186001c2d6f1c5833cf63ae490c2a9607d557d670c58d6566188"
+        },
+        {
+            "type": "file",
+            "name": "backend/testimonial/add_testimonial.php",
+            "size": 1840,
+            "hash": "41894cc7ba78c0b419e14d6072f4346eb92b0219e6a3efc197e63eed75b3d9ee"
+        },
+        {
+            "type": "file",
+            "name": "backend/testimonial/delete_testimonial.php",
+            "size": 742,
+            "hash": "48e1043ef23f5b4cbe9f6ff483cfaefbf864168933031cfe0c89ccb5e621f04c"
+        },
+        {
+            "type": "file",
+            "name": "home_page/about/about.css",
+            "size": 2097,
+            "hash": "486b9e5099a500fca6416efd1c95c705277c5d534469aff37438d85376c82941"
+        },
+        {
+            "type": "file",
+            "name": "backend/testimonial/update_testimonial.php",
+            "size": 1360,
+            "hash": "5016e722d4866dd84fe4f3bb80add142ed3a9bc74a5af2141c744e477fd05c0f"
+        },
+        {
+            "type": "file",
+            "name": "home_page/about/about.php",
+            "size": 759,
+            "hash": "49e42191c1a604f5595e5fe66847db2fb5cecb59a1a99c9ee4f93777cce4f1de"
+        },
+        {
+            "type": "file",
+            "name": "home_page/about/about_section.php",
+            "size": 2590,
+            "hash": "d2591b81ea9a0ae3c194acf0be1645188cc6c00e072dd86fc670d94c33e4dd7f"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/comp/footer"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/comp/achievement"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/comp/hero"
+        },
+        {
+            "type": "folder",
+            "name": "home_page/comp/nav"
+        },
+        {
+            "type": "file",
+            "name": "home_page/gallery/gallery_page.css",
+            "size": 5547,
+            "hash": "5be08ec263b391627f8e9dc2de71f6051bb758bfd11fd4dc730aa96e90f56255"
+        },
+        {
+            "type": "file",
+            "name": "home_page/gallery/gallery_page.js",
+            "size": 1737,
+            "hash": "03a44e5e032c6b9301150f9d0956c3a1a499d08c98ed5960007042daa5e94397"
+        },
+        {
+            "type": "file",
+            "name": "home_page/gallery/gallery_page.php",
+            "size": 3576,
+            "hash": "1b2a30f973379ce45024f9acfc036c0d08b99476b21693c269287af5d592b73b"
+        },
+        {
+            "type": "file",
+            "name": "home_page/contact/contact_page.css",
+            "size": 3539,
+            "hash": "ee793756a8bfa0b857358abf898a4439d5402ae5d8aca375606b578d7633317b"
+        },
+        {
+            "type": "file",
+            "name": "home_page/contact/contact_page.js",
+            "size": 1932,
+            "hash": "96bf2285d7ea51eda070fc9906aece586a409a07744b90a6a49cd4673a72360a"
+        },
+        {
+            "type": "file",
+            "name": "home_page/contact/contact_page.php",
+            "size": 4394,
+            "hash": "aa5e29d22298272069ef49fbbfa13d56d1b5cc48150e50d0bbd89cf753461eff"
+        },
+        {
+            "type": "file",
+            "name": "home_page/notice/notice_page.css",
+            "size": 2675,
+            "hash": "a0faeb24b4a41454ad24f61447d75c5b04ec5eeb047756047a1bba21de842d33"
+        },
+        {
+            "type": "file",
+            "name": "home_page/notice/notice_page.php",
+            "size": 2930,
+            "hash": "e9ec5a01cf277e4ceba94c875fc2c8cad445b86ff1d15641ef411f78f36beff4"
+        },
+        {
+            "type": "file",
+            "name": "home_page/review/review_page.css",
+            "size": 2745,
+            "hash": "e5e9e472a2c6a4858d2369fa87dbe5a0e31d13b9939c164578e0d2d993adf555"
+        },
+        {
+            "type": "file",
+            "name": "home_page/review/review_page.js",
+            "size": 3007,
+            "hash": "72e61eb29b730b4bced10669beec89d870500bc81410855c9b3e2a62ecc3f072"
+        },
+        {
+            "type": "file",
+            "name": "home_page/review/review_page.php",
+            "size": 2718,
+            "hash": "e062f375b665b810bdbedf22a9a6b94efce4bf1acc9f8fb2f61668942330d2ac"
+        },
+        {
+            "type": "file",
+            "name": "home_page/teacher/teacher_page.css",
+            "size": 1768,
+            "hash": "fbdde879d9fb61f2ff19cedd9b6a4098a23d93cf67bd60b2821df2cee1a4d061"
+        },
+        {
+            "type": "file",
+            "name": "home_page/teacher/teacher_page.js",
+            "size": 2225,
+            "hash": "8c584833731c4b4e64436a166d8601296acde35107907c158ffc8729a7877a60"
+        },
+        {
+            "type": "file",
+            "name": "home_page/teacher/teacher_page.php",
+            "size": 6427,
+            "hash": "32a83e83c8a8ccaa26823ac381c1ec02424cac6068adbeb9d0877ee397ff9b03"
+        },
+        {
+            "type": "file",
+            "name": "home_page/testimonial/testimonial_page.css",
+            "size": 3590,
+            "hash": "83fc4712c1f9ae09d8a9a091ace4b8e8f2c8b52083913ea1aaf451306b2e452d"
+        },
+        {
+            "type": "file",
+            "name": "home_page/testimonial/testimonial_page.js",
+            "size": 1869,
+            "hash": "16812dde49aa62e5301639f340c35a4bd5d958e83a8927d3a7aa509b3e2f439d"
+        },
+        {
+            "type": "file",
+            "name": "home_page/testimonial/testimonial_page.php",
+            "size": 899,
+            "hash": "014834759a7af0fb5b12e5cf4ae3703e54d990fd93aaa21079e97ce007b76c7a"
+        },
+        {
+            "type": "file",
+            "name": "home_page/testimonial/testimonial_section.php",
+            "size": 2696,
+            "hash": "1fa562e0e90bd515e120b7b139dd218cc2f719d31421286d66b5c8eff5cfce86"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/achievement"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/enquiry"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/gallery"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/index.php",
+            "size": 4945,
+            "hash": "71716a34a881388ff3de68e64aab6639dc90d4b6d81b5e07557b5ee73a1188ef"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/notice"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/script.js",
+            "size": 1633,
+            "hash": "d5aa5438bfcb72e3a54efa9575316785cbde550cd3958e2699d113dc901201e1"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/site_content"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/site_settings"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/style.css",
+            "size": 5312,
+            "hash": "1a40b9126b265486fc0f1144e416c7244247eb9753660c9ca7aff52dbf68a8fb"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/teacher"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/admin/testimonial"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/auth_check.php",
+            "size": 172,
+            "hash": "ef97e4221a218e1d398a7640e01eea7a8b16d77cf274701f681693a5178252e4"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/comp/nav"
+        },
+        {
+            "type": "folder",
+            "name": "frontend/comp/sidebar"
+        },
+        {
+            "type": "file",
+            "name": "backend/site_content/data/site_content.json",
+            "size": 3187,
+            "hash": "12862f7bdd5e94bb05ce166e1e5da47978bd180c015ed5cc59768d348d7911e2"
+        },
+        {
+            "type": "file",
+            "name": "backend/site_content/data/site_content_backup.json",
+            "size": 2819,
+            "hash": "9e5c74854f68fe8965416bffc440eb8bccc0fe7c6ad09fb5809e6845dce3da53"
+        },
+        {
+            "type": "file",
+            "name": "backend/site_content/data/site_content_defaults.json",
+            "size": 2730,
+            "hash": "f40e45af738390725533c6d4e770748fe0012a6dc693bc5a3e723aac50e35645"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/footer/footer.css",
+            "size": 2152,
+            "hash": "54acb7c3251bce6c99a53071694f65548a04a09ec19f994ed82757e68f89adaa"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/footer/footer.php",
+            "size": 3574,
+            "hash": "e3c9a15f7ab2f4e26b964ce079c15a860b5274e10f48c3ea466d9e611d1f36ef"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/achievement/achievement.css",
+            "size": 3219,
+            "hash": "949450ba436c0f48fedf95481328e335ba31f462a7cd862500f7a9634a1bda45"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/achievement/achievement_section.php",
+            "size": 2792,
+            "hash": "58ea24b0594c673a70fda0b99e4f23432f2cc8f858b7909c98ea6b2f3441b778"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/achievement/achievement.js",
+            "size": 1684,
+            "hash": "565254fce088e006401cccd6c98a931a8009e1f6d52a94fc3a650002f31c4f33"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/hero/hero.css",
+            "size": 3575,
+            "hash": "41df5378e1411ca8844d2611af5bfd277dd2777602ada0e610a4c87f22f17c5b"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/hero/hero.js",
+            "size": 1122,
+            "hash": "f3e92b4b6d058becdbebc351ede4bd1690fd6391c37e6bd25cb8d79d90ce072e"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/hero/hero.php",
+            "size": 2338,
+            "hash": "34f925f497370251b901bae604adb49231c899c443d9242d87b4668486479559"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/nav/nav.css",
+            "size": 3235,
+            "hash": "9ba0257c4e69c6384ba16b4aa0cce7b35b2e4520d76b22bf7f3c4a1fd76eaa94"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/nav/nav.js",
+            "size": 580,
+            "hash": "df0ede4b5e653b73ad4c042d702642d990bae89b4ea79c9d72bd0efe580208fe"
+        },
+        {
+            "type": "file",
+            "name": "home_page/comp/nav/nav.php",
+            "size": 2567,
+            "hash": "6b2e1883db8140a628737b21bef06475713432a09ea43f18a1c1007c12b60aeb"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/achievement/achievement.css",
+            "size": 7814,
+            "hash": "4bf8ae2c4696cb56414c544ab9f5146da7208a3b033b170c54fa20445635a5ca"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/achievement/achievement.js",
+            "size": 5133,
+            "hash": "7e5d5dae8140f6b1fcf826777d922cb1b832578f05c4c0fbf7793448d74854d2"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/achievement/achievement.php",
+            "size": 10102,
+            "hash": "606b0d17f12633aa16b4238a7309b2e9d51597ecc2e1269c6ced2d767275ea15"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/enquiry/enquiry.css",
+            "size": 3112,
+            "hash": "a8618ed03f0d585aaf0f1cfdc6fb39dbd89add424ed5b69129599380c8c843e1"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/enquiry/enquiry.js",
+            "size": 2439,
+            "hash": "fb269635bc537ae730af3fec4672e5093781ff32b7853229c4958e38d2a5c685"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/enquiry/enquiry.php",
+            "size": 4413,
+            "hash": "4dba535bab0d22ac4304b9eae12228d70d15c5866e3df83c14c9a8c399c9eaf6"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/gallery/gallery.css",
+            "size": 6500,
+            "hash": "4f733d6820f31032bbb37cd265b32d33b7556a3f0ed6ec4e1b19148a51c85cae"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/gallery/gallery.js",
+            "size": 3576,
+            "hash": "de1fe10bf82c27980af760ab25ed55b565e7c6e3d2733cff9ecca501cae616f5"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/gallery/gallery.php",
+            "size": 8174,
+            "hash": "81777bd1ad306b36b51b48990052a3de2d88a8f368c82f518359d402caae7f48"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/notice/notice.css",
+            "size": 6079,
+            "hash": "bb67e4a0c83a61008312dd87098b4c26d676c896f504155917412cd7d80bc3fd"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/notice/notice.js",
+            "size": 4845,
+            "hash": "2440659137b50ea863853a9037f95f432b2798327ae73cbc607f987473358c3a"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/notice/notice.php",
+            "size": 11189,
+            "hash": "53c8cb1830d3bda21d2283699310b4fb51217a50fb0eb7db0905fdeed6d88a50"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/site_content/site_content.css",
+            "size": 978,
+            "hash": "c961970e14dbbe7e3fa722abeb81f510027441df3f9f16929ad71bc58eab4538"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/site_content/site_content.js",
+            "size": 942,
+            "hash": "2529ca1fddce58c5523d7b5f7592a4ea21b376b3a5fee0f4897b864429ed0307"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/site_content/site_content.php",
+            "size": 1880,
+            "hash": "79a2c82babbb8fe03beb0840805d9b5d7197269e8ac96f2ab06a7df2b94656e6"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/site_settings/index.css",
+            "size": 6033,
+            "hash": "9047c14f0f36684df0dd4b7677af761d5c1a11f735d8c5472ddac9ba2ac829aa"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/site_settings/index.js",
+            "size": 3973,
+            "hash": "58025762c8d82e520c8c4a4b98f5408c3e05dd29766ec85c8b8a4fa094593ac5"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/site_settings/index.php",
+            "size": 15848,
+            "hash": "e0d516ce0bfce1bfbc74b8662c45cd889507c2d8599808e1e7dcdaa76aa6fa53"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/teacher/teacher.css",
+            "size": 14962,
+            "hash": "54a4ce26e53837981496a890f3c694fef5a2b84f84e78b38652b206c3f718800"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/teacher/teacher.js",
+            "size": 9071,
+            "hash": "f0620167aeeae49cc5ed81051afb6ee2503293aff2347d3f83323bd935bf59ec"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/teacher/teacher.php",
+            "size": 19245,
+            "hash": "9a36c6a871554f09e8995d9c996b70d55f7fd5738bf9f05f33354be3ace1c898"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/testimonial/testimonial.css",
+            "size": 3257,
+            "hash": "585ebcbc9490f33fd7cd2f4daa680744b9e8a8ba2b2d64b42af393c61bf9a928"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/testimonial/testimonial.js",
+            "size": 5380,
+            "hash": "12ca91cdd3aa997cb21b63ae4b9430fd3be1111eba6e3b9bf6e0c52aad59a084"
+        },
+        {
+            "type": "file",
+            "name": "frontend/admin/testimonial/testimonial.php",
+            "size": 9087,
+            "hash": "88472847b7589f8f8ebc50622e4a8f51ca912d73f3a28f486b98163ba66bce7c"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/nav/nav.css",
+            "size": 3033,
+            "hash": "c3238770cd4bf30c98f06539b4c8a250328b184e6c6f5abb7a93dca68d8f1218"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/nav/nav.js",
+            "size": 1686,
+            "hash": "c4a3dd80f4e981b890a0bc253dca62cfe118c596437e8ac10fc2999b3d601612"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/nav/nav.php",
+            "size": 797,
+            "hash": "e8f21b5290782d3d10e662568f326ed144a6390e191b1318d963bd9799d4e037"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/sidebar/sidebar.css",
+            "size": 5076,
+            "hash": "4b7d72af45d536269d71a8490054a924fecc7c04b71dff106cf5997842c3d865"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/sidebar/sidebar.js",
+            "size": 2066,
+            "hash": "6379f4884ea346221cc9ce442c71c104dc430a46a1990050122460d8cde1b967"
+        },
+        {
+            "type": "file",
+            "name": "frontend/comp/sidebar/sidebar.php",
+            "size": 3656,
+            "hash": "c66add6dc55569ed481b07b29d0a18318b5a8f44913d0dece58a2091ba8f14a9"
+        }
+    ]
+}
