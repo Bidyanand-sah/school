@@ -1,16 +1,26 @@
 /* ============================================================
-   SITE SETTINGS — Admin Panel (polished)
+   SITE SETTINGS — Admin Panel
+   Design #3: Card per field — har field apna icon + box.
+   Fixed grid: mobile = 1 column, desktop (>=641px) = 2 columns.
+   No auto-fit — column count is explicit so it never jumps to
+   3-4 columns on wide screens. min-width:0 everywhere prevents
+   content (long text, file names) from pushing cards/labels
+   outside their track.
    ============================================================ */
 
-.main-content { padding: 24px !important; background: #f4f7fc; min-height: 100vh; }
+* { box-sizing: border-box; }
+
+.main-content { padding: 20px 24px 60px !important; background: #f4f7fc; min-height: 100vh; overflow-x: hidden; }
+
+.ss-wrap { max-width: 1400px; margin: 0 auto; width: 100%; min-width: 0; }
 
 /* ===== HEADER ===== */
 .ss-header {
     background: linear-gradient(135deg, #1a2639 0%, #2c3e50 100%);
     color: #fff;
-    padding: 26px 30px;
+    padding: 26px 32px;
     border-radius: 18px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     box-shadow: 0 10px 30px rgba(26,38,57,0.18);
     position: relative;
     overflow: hidden;
@@ -21,9 +31,9 @@
     background: radial-gradient(circle at 85% 20%, rgba(255,200,87,0.12), transparent 55%);
     pointer-events:none;
 }
-.ss-header .brand { font-size: 1.65rem; font-weight: 800; position:relative; }
+.ss-header .brand { font-size: 1.7rem; font-weight: 800; position:relative; }
 .ss-header .brand i { color: #ffc857; margin-right: 10px; }
-.ss-subtitle { color: #cbd5e1; margin: 6px 0 0 0; font-size: 0.92rem; position:relative; }
+.ss-subtitle { color: #cbd5e1; margin: 6px 0 0 0; font-size: 0.94rem; position:relative; }
 
 /* ===== TABS ===== */
 .ss-tabs {
@@ -33,20 +43,24 @@
     padding: 6px;
     border-radius: 14px;
     border: 1px solid #e9edf3;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+    margin-bottom: 22px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    overflow-x: auto;
+    scrollbar-width: none;
 }
+.ss-tabs::-webkit-scrollbar { display:none; }
 .ss-tab {
-    padding: 11px 22px;
+    padding: 12px 24px;
     border: none;
     border-radius: 10px;
     background: transparent;
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: #64748b;
     cursor: pointer;
     transition: all 0.25s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 .ss-tab:hover { background: #f1f5f9; color: #1a2639; }
 .ss-tab.active {
@@ -56,124 +70,85 @@
 }
 .ss-tab i { margin-right: 6px; }
 
-/* ===== CARDS ===== */
+/* ===== CARD (section wrapper) ===== */
 .ss-card {
     background: #fff;
     border-radius: 18px;
-    padding: 30px 32px;
+    padding: 32px 36px;
     border: 1px solid #e9edf3;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    max-width: 760px;
+    width: 100%;
+    margin-bottom: 22px;
+    min-width: 0;
 }
 .ss-card h3 {
     color: #0f172a;
-    margin-bottom: 22px;
-    font-size: 1.22rem;
+    margin-bottom: 24px;
+    font-size: 1.3rem;
     font-weight: 700;
-    display:flex; align-items:center; gap:8px;
-    padding-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+    padding-bottom:16px;
     border-bottom: 1px solid #eef2f7;
 }
 .ss-card h3 i {
     color: #ffc857;
     background:#1a2639;
-    width:34px; height:34px;
+    width:38px; height:38px;
     border-radius:10px;
     display:flex; align-items:center; justify-content:center;
-    font-size:0.95rem;
+    font-size:1rem;
+    flex-shrink:0;
 }
 .ss-card h4 {
     color: #1a2639;
-    margin: 20px 0 6px;
-    font-size: 0.95rem;
+    margin: 22px 0 8px;
+    font-size: 1rem;
     font-weight: 700;
-    display:flex; align-items:center; gap:6px;
+    display:flex; align-items:center; gap:8px;
 }
+.ss-hint { display:block; color:#94a3b8; font-size:0.8rem; margin-bottom:14px; line-height:1.5; }
 
-/* ===== FIELDS ===== */
-.field { margin-bottom: 16px; }
-.field label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.82rem;
-    color: #1e293b;
-    margin-bottom: 5px;
-}
-.field label i { color:#4a90e2; margin-right:4px; width:14px; }
-.field input[type="text"], .field textarea {
-    width: 100%;
-    padding: 11px 14px;
-    border: 1.5px solid #dce3ec;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-    font-family: inherit;
-    background: #fafcff;
-}
-.field input[type="text"]:focus, .field textarea:focus {
-    outline: none;
-    border-color: #1a2639;
-    box-shadow: 0 0 0 4px rgba(26,38,57,0.08);
-    background: #fff;
-}
-.field textarea { resize: vertical; min-height: 90px; line-height:1.5; }
+hr { border: none; border-top: 1px solid #eef2f7; margin: 26px 0 4px; }
 
-.field-row {
+/* ============================================================
+   FIELD GRID — explicit breakpoints (no auto-fit).
+   Mobile: 1 column. Desktop (>=641px): 2 columns.
+   minmax(0, 1fr) so grid items never overflow their track.
+   ============================================================ */
+.ss-grid, .ss-points-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
 }
-.field-row input {
-    width: 100%;
-    padding: 11px 14px;
-    border: 1.5px solid #dce3ec;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    background: #fafcff;
-    transition: all 0.2s;
-}
-.field-row input:focus { outline: none; border-color: #1a2639; box-shadow: 0 0 0 4px rgba(26,38,57,0.08); background:#fff; }
 
-/* ===== IMAGE UPLOAD ROW ===== */
-.img-preview-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    background:#f8fafc;
-    border:1px dashed #dce3ec;
-    border-radius:12px;
-    padding:12px 14px;
+@media (min-width: 641px) {
+    .ss-grid, .ss-points-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
-.preview-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid #e9edf3;
-    background:#fff;
-}
-.file-input { max-width: 200px; font-size:0.82rem; }
-.file-name { font-size: 0.8rem; color: #94a3b8; }
 
-hr { border: none; border-top: 1px solid #eef2f7; margin: 22px 0; }
-
-/* ===== ABOUT: Highlight Point boxes ===== */
-.ss-subsection { margin-top: 6px; }
-.ss-point-box {
+/* ============================================================
+   FIELD CARD — the core "card per field" unit
+   ============================================================ */
+.field-card {
     position: relative;
-    background: #f8fafc;
+    background: #fff;
     border: 1px solid #e9edf3;
     border-radius: 14px;
-    padding: 18px 18px 4px 60px;
-    margin-bottom: 14px;
+    padding: 16px 16px 16px 60px;
     transition: border-color .2s, box-shadow .2s;
+    min-width: 0;
 }
-.ss-point-box:hover { border-color:#c7d2e0; box-shadow:0 4px 14px rgba(0,0,0,0.04); }
-.ss-point-icon {
+.field-card:hover {
+    border-color: #c7d2e0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+.field-card-full { grid-column: 1 / -1; }
+
+.field-icon {
     position: absolute;
-    top: 18px;
+    top: 16px;
     left: 16px;
     width: 32px;
     height: 32px;
@@ -183,26 +158,107 @@ hr { border: none; border-top: 1px solid #eef2f7; margin: 22px 0; }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    flex-shrink: 0;
 }
-.ss-point-box .field { margin-bottom: 12px; }
+
+.field-card label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+    padding-top: 4px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.field-card input[type="text"],
+.field-card textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1.5px solid #dce3ec;
+    border-radius: 9px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: #fafcff;
+    transition: all 0.2s;
+}
+.field-card input[type="text"]:focus,
+.field-card textarea:focus {
+    outline: none;
+    border-color: #1a2639;
+    box-shadow: 0 0 0 4px rgba(26,38,57,0.08);
+    background: #fff;
+}
+.field-card textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+/* ===== PAIR CARD (two stacked inputs inside one card — stats, points, quick links) ===== */
+.pair-card .pair-title {
+    margin-bottom: 10px;
+    color: #94a3b8;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.pair-inputs { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.pair-inputs input {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1.5px solid #dce3ec;
+    border-radius: 9px;
+    font-size: 0.88rem;
+    background: #fafcff;
+    transition: all 0.2s;
+}
+.pair-inputs input:focus {
+    outline: none;
+    border-color: #1a2639;
+    box-shadow: 0 0 0 4px rgba(26,38,57,0.08);
+    background: #fff;
+}
+
+/* ===== IMAGE UPLOAD ROW (inside a field-card) ===== */
+.img-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+.preview-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 9px;
+    object-fit: cover;
+    border: 2px solid #e9edf3;
+    background:#fff;
+    flex-shrink:0;
+}
+.file-input { max-width: 170px; font-size:0.8rem; }
+.file-name { font-size: 0.78rem; color: #94a3b8; min-width: 0; overflow-wrap: break-word; }
+
+/* ===== ABOUT: subsection spacing ===== */
+.ss-subsection { margin-top: 10px; }
 
 /* ===== SAVE ===== */
 .ss-save-row {
-    margin-top: 24px;
+    margin-top: 6px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    max-width: 760px;
+    gap: 18px;
+    flex-wrap: wrap;
 }
 #saveAllBtn {
     background: linear-gradient(135deg, #1a2639, #2c3e50);
     color: #fff;
     border: none;
-    padding: 13px 38px;
+    padding: 14px 42px;
     border-radius: 50px;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     cursor: pointer;
     transition: all 0.25s;
     box-shadow: 0 4px 16px rgba(26,38,57,0.3);
@@ -211,15 +267,47 @@ hr { border: none; border-top: 1px solid #eef2f7; margin: 22px 0; }
 #saveAllBtn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 #saveAllBtn i { margin-right: 8px; }
 
-#saveMsg { font-size: 0.9rem; font-weight: 600; }
+#saveMsg { font-size: 0.92rem; font-weight: 600; }
 #saveMsg.success { color: #16a34a; }
 #saveMsg.error { color: #dc2626; }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 576px) {
-    .ss-card { padding: 18px; max-width:100%; }
-    .field-row { grid-template-columns: 1fr; }
-    .ss-tab { padding: 8px 14px; font-size: 0.8rem; }
-    .ss-point-box { padding-left: 16px; }
-    .ss-point-icon { position:static; margin-bottom:10px; }
+/* ============================================================
+   RESPONSIVE — Tablet
+   ============================================================ */
+@media (max-width: 992px) {
+    .ss-card { padding: 26px 22px; }
+    .ss-grid, .ss-points-grid { gap: 14px; }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile
+   ============================================================ */
+@media (max-width: 640px) {
+    .main-content { padding: 14px 14px 50px !important; }
+    .ss-header { padding: 20px 20px; border-radius: 14px; }
+    .ss-header .brand { font-size: 1.3rem; }
+    .ss-subtitle { font-size: 0.85rem; }
+
+    .ss-tabs { padding: 5px; border-radius: 12px; margin-bottom:16px; }
+    .ss-tab { padding: 10px 16px; font-size: 0.82rem; }
+
+    .ss-card { padding: 18px 14px; border-radius: 14px; }
+    .ss-card h3 { font-size: 1.1rem; margin-bottom:18px; padding-bottom:12px; }
+    .ss-card h3 i { width:32px; height:32px; font-size:0.88rem; }
+    .ss-card h4 { font-size: 0.92rem; }
+
+    .field-card { padding: 14px 14px 14px 54px; border-radius: 12px; }
+    .field-icon { width: 28px; height: 28px; top: 14px; left: 14px; font-size: 0.85rem; }
+    .field-card label { font-size: 0.8rem; margin-bottom: 6px; }
+    .field-card input[type="text"], .field-card textarea, .pair-inputs input {
+        padding: 9px 11px;
+        font-size: 0.86rem;
+    }
+
+    .img-preview-row { gap: 10px; }
+    .preview-img { width: 40px; height: 40px; }
+    .file-input { max-width: 100%; width:100%; }
+
+    .ss-save-row { position: sticky; bottom: 0; background: #f4f7fc; padding: 12px 0; margin-top:4px; }
+    #saveAllBtn { width: 100%; padding: 14px; }
 }
