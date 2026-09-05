@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 // home_page/testimonial/testimonial_page.php — public, read-only, sab reviews dikhata hai
-include '../backend/con1.php';
+include 'backend/con1.php';
 
 ?>
 <!DOCTYPE html>
@@ -11,22 +11,22 @@ include '../backend/con1.php';
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bright Future International School</title>
+<title>Future School</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="comp/nav/nav.css">
-<link rel="stylesheet" href="comp/hero/hero.css">
-<link rel="stylesheet" href="about/about.css">
-<link rel="stylesheet" href="testimonial/testimonial_page.css">
-<link rel="stylesheet" href="comp/footer/footer.css">
-<link rel="stylesheet" href="comp/achievement/achievement.css">
+<link rel="stylesheet" href="home_page/comp/nav/nav.css">
+<link rel="stylesheet" href="home_page/comp/hero/hero.css">
+<link rel="stylesheet" href="home_page/about/about.css">
+<link rel="stylesheet" href="home_page/testimonial/testimonial_page.css">
+<link rel="stylesheet" href="home_page/comp/footer/footer.css">
+<link rel="stylesheet" href="home_page/comp/achievement/achievement.css">
 </head>
 <body>
 
-<?php include_once("comp/nav/nav.php"); ?>
-<?php include_once("comp/hero/hero.php"); ?>
-<?php include_once("about/about_section.php"); ?>
+<?php include_once("home_page/comp/nav/nav.php"); ?>
+<?php include_once("home_page/comp/hero/hero.php"); ?>
+<?php include_once("home_page/about/about_section.php"); ?>
 
 <section class="modules-preview">
   <div class="modules-inner">
@@ -60,19 +60,19 @@ include '../backend/con1.php';
 <?php
 
 $achievementLimit = 6;
-$achievementImgPrefix = "../";
-include_once("comp/achievement/achievement_section.php");
+$achievementImgPrefix = "";
+include_once("home_page/comp/achievement/achievement_section.php");
 ?>
 
-<?php include_once("testimonial/testimonial_section.php"); ?>
-<?php include_once("comp/footer/footer.php"); ?>
+<?php include_once("home_page/testimonial/testimonial_section.php"); ?>
+<?php include_once("home_page/comp/footer/footer.php"); ?>
 
-<script src="comp/nav/nav.js"></script>
-<script src="comp/hero/hero.js"></script>
+<script src="home_page/comp/nav/nav.js"></script>
+<script src="home_page/comp/hero/hero.js"></script>
 
-<script src="comp/achievement/achievement.js"></script>
+<script src="home_page/comp/achievement/achievement.js"></script>
 
-<script src="testimonial/testimonial_page.js"></script>
+<script src="home_page/testimonial/testimonial_page.js"></script>
 
 </body>
 </html>

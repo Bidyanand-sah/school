@@ -12,11 +12,8 @@
 
 <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-        <!-- <a href="/sms_teacher/home_page/index.php" class="nav-brand">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Bright Future <em>International School</em></span>
-        </a> -->
-     <a href="/sms_teacher/home_page/index.php" class="nav-brand">
+        
+     <a href="/sms_teacher/index.php" class="nav-brand">
     <?php if (getContent('site_logo')): ?>
         <img src="<?= getContent('site_logo') ?>" style="height:32px;width:32px;border-radius:6px;object-fit:cover;">
     <?php else: ?>
@@ -28,7 +25,7 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/sms_teacher/home_page/index.php">Home</a></li>
+            <li><a href="/sms_teacher/index.php">Home</a></li>
             <li><a href="/sms_teacher/home_page/about/about.php">About</a></li>
             <li><a href="/sms_teacher/home_page/teacher/teacher_page.php">Teachers</a></li>
             <li><a href="/sms_teacher/home_page/gallery/gallery_page.php">Gallery</a></li>
