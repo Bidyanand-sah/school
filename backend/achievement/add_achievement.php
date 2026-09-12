@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require_once __DIR__ . '/../con1.php';
-require_once __DIR__ . '/../con1.php';
+require_once __DIR__ . '/../comp/image_helper.php';
 ini_set('display_errors', 1);
 
 

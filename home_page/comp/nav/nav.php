@@ -1,11 +1,13 @@
-<?php require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php'; ?>
+<?php 
+require_once __DIR__ . '/../../../backend/config.php';
+require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>navbar</title>
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="<?= app_url('/home_page/comp/nav/nav.css') ?>">
 </head>
 <body>
     
@@ -13,7 +15,7 @@
 <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
         
-     <a href="<?= app_url('/home_page/index.php') ?>" class="nav-brand">
+     <a href="<?= app_url('/') ?>" class="nav-brand">
     <?php if (getContent('site_logo')): ?>
         <img src="<?= getContent('site_logo') ?>" style="height:32px;width:32px;border-radius:6px;object-fit:cover;">
     <?php else: ?>
@@ -25,7 +27,7 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="<?= app_url('/home_page/index.php') ?>">Home</a></li>
+            <li><a href="<?= app_url('/') ?>">Home</a></li>
             <li><a href="<?= app_url('/home_page/about/about.php') ?>">About</a></li>
             <li><a href="<?= app_url('/home_page/teacher/teacher_page.php') ?>">Teachers</a></li>
             <li><a href="<?= app_url('/home_page/gallery/gallery_page.php') ?>">Gallery</a></li>
@@ -50,6 +52,6 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<script src="nav.js"></script>
+<script src="<?= app_url('/home_page/comp/nav/nav.js') ?>"></script>
 </body>
 </html>

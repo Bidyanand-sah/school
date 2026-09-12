@@ -27,7 +27,7 @@ require_once __DIR__ . '/../../comp/auth_check.php';
 
     <label>Logo</label>
     <div class="sc-logo-row">
-        <img src="<?= getContent('site_logo') ? '../../../' . ltrim(getContent('site_logo'), '/') : '#' ?>"
+        <img src="<?= getContent('site_logo') ? htmlspecialchars(app_url(getContent('site_logo'))) : '#' ?>"
              id="logoPreview" style="<?= getContent('site_logo') ? '' : 'display:none;' ?>">
         <input type="file" id="siteLogo" accept="image/*">
     </div>

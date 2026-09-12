@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../comp/sidebar/sidebar.php';
+require_once __DIR__ . '/../../../backend/con1.php';
 require_once __DIR__ . '/../../comp/auth_check.php';
 
 $result = $conn->query("SELECT id, img, detail FROM gallery ORDER BY id DESC");

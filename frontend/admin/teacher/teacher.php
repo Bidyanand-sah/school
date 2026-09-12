@@ -87,7 +87,7 @@ $totalTexts    = countWithBio($teachers);
 
     <div class="main-container">
         <?php
-            require_once __DIR__ . '/../../comp/nav/nav.php';
+            require_once __DIR__ . '/../../comp/sidebar/sidebar.php';
 
         ?>
         <!-- Main Content -->

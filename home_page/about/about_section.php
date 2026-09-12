@@ -10,7 +10,7 @@
     <div class="about-inner">
         <div class="about-media">
             <?php if (getContent('about_img')): ?>
-                <img src="<?= htmlspecialchars(getContent('about_img')) ?>" alt="Our campus">
+                <img src="<?= htmlspecialchars(app_url(getContent('about_img'))) ?>" alt="Our campus">
             <?php else: ?>
                 <div class="about-placeholder"><i class="fas fa-school"></i></div>
             <?php endif; ?>

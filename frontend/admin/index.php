@@ -1,4 +1,6 @@
-<?php require_once __DIR__ . '/../comp/auth_check.php'; ?>
+<?php 
+require_once __DIR__ . '/../comp/auth_check.php'; 
+?>
 
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@
 
     <!-- Top Navbar -->
         <?php
-            require_once __DIR__ . '/../comp/auth_check.php';
+            require_once __DIR__ . '/../comp/nav/nav.php';
         ?>
     <!-- End Navbar  -->
 
