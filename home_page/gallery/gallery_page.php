@@ -1,6 +1,6 @@
 <?php
 // gallery/gallery_page.php — public/client-facing, read-only
-include '../../backend/con1.php';
+require_once __DIR__ . '/../../backend/con1.php';
 
 $result = $conn->query("SELECT id, img, detail FROM gallery ORDER BY id DESC");
 $photos = [];
@@ -23,14 +23,14 @@ while ($row = $result->fetch_assoc()) { $photos[] = $row; }
 <body data-theme="light-blue">
 
     <?php
-    include_once("../comp/nav/nav.php");
+    require_once __DIR__ . '/../comp/nav/nav.php';
   ?>
 
   <?php
 // Gallery page = saare achievements dikhenge, koi limit nahi
 $achievementLimit = 0;
 $achievementImgPrefix = "../../";
-include_once("../comp/achievement/achievement_section.php");
+require_once __DIR__ . '/../comp/achievement/achievement_section.php';
 ?>
 
     <div class="gp-hero">
@@ -75,7 +75,7 @@ include_once("../comp/achievement/achievement_section.php");
         </div>
         <button class="gp-lb-nav gp-lb-next" id="gpLbNext"><i class="bi bi-chevron-right"></i></button>
     </div>
-    <?php include_once("../comp/footer/footer.php"); ?>
+    <?php require_once __DIR__ . '/../comp/footer/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="gallery_page.js"></script>

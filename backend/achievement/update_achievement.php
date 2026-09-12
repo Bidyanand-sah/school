@@ -2,8 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Content-Type: application/json');
-include '../con1.php';
-include '../comp/image_helper.php';
+require_once __DIR__ . '/../con1.php';
+require_once __DIR__ . '/../comp/image_helper.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Invalid request"]);

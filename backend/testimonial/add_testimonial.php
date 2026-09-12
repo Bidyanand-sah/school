@@ -2,7 +2,7 @@
 // backend/testimonial/add_testimonial.php
 // Public review page aur Admin panel dono isi file ko call karte hain
 header('Content-Type: application/json');
-include '../con1.php';
+require_once __DIR__ . '/../con1.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Invalid request"]);

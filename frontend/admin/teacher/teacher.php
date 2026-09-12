@@ -1,7 +1,7 @@
 <?php
 // backend/con1.php se connection le rahe hain
-include '../../../backend/con1.php';
-include '../../comp/auth_check.php';
+require_once __DIR__ . '/../../../backend/con1.php';
+require_once __DIR__ . '/../../comp/auth_check.php';
 
 function getLatestByType($conn, $type) {
     $stmt = $conn->prepare("SELECT id, name, type, subject, bio, img, time FROM teacher WHERE type = ? ORDER BY id DESC LIMIT 1");
@@ -81,13 +81,13 @@ $totalTexts    = countWithBio($teachers);
 
     <!-- Navbar -->
     <?php
-        include_once('../../comp/nav/nav.php');
+        require_once __DIR__ . '/../../comp/nav/nav.php';
 
     ?>
 
     <div class="main-container">
         <?php
-            include_once('../../comp/sidebar/sidebar.php');
+            require_once __DIR__ . '/../../comp/nav/nav.php';
 
         ?>
         <!-- Main Content -->

@@ -1,6 +1,6 @@
 <?php
-include '../../../backend/con1.php';
-include '../../comp/auth_check.php';
+require_once __DIR__ . '/../../../backend/con1.php';
+require_once __DIR__ . '/../../comp/auth_check.php';
 
 $result = $conn->query("SELECT id, title, content, category, pdf, pinned, date FROM notice ORDER BY pinned DESC, id DESC");
 $notices = [];
@@ -22,10 +22,10 @@ $totalNotices = count($notices);
 </head>
 <body data-theme="light-blue">
 
-    <?php include_once('../../comp/nav/nav.php'); ?>
+    <?php require_once __DIR__ . '/../../comp/nav/nav.php'; ?>
 
     <div class="main-container">
-        <?php include_once('../../comp/sidebar/sidebar.php'); ?>
+        <?php require_once __DIR__ . '/../../comp/sidebar/sidebar.php'; ?>
 
         <div class="main-content" id="mainContent">
 

@@ -1,7 +1,6 @@
 <?php
-include '../../../backend/con1.php';
-include '../../comp/auth_check.php';
-
+require_once __DIR__ . '/../../../backend/con1.php';
+require_once __DIR__ . '/../../../backend/con1.php';
 // Not-called wale pehle dikhenge
 $result = $conn->query("SELECT * FROM enquiry ORDER BY is_called ASC, id DESC");
 $enquiries = [];
@@ -28,14 +27,14 @@ $pending = count(array_filter($enquiries, fn($e) => $e['is_called'] == 0));
 
 <!-- NavBar -->
     <?php
-        include_once('../../comp/nav/nav.php')
+        require_once __DIR__ . '/../../comp/nav/nav.php';
     ?>
 <!-- NavBar -->
 
 <div class="main-container">
     
   <?php
-        include_once('../../comp/sidebar/sidebar.php')
+        require_once __DIR__ . '/../../comp/nav/nav.php';
     ?>
 
     <div class="main-content" id="mainContent">

@@ -4,7 +4,7 @@
 // Frontend isi ko call karke bottom scroll section aur "Teachers" count fill karega.
 
 header('Content-Type: application/json');
-include '../con1.php';
+require_once __DIR__ . '/../con1.php';
 
 $result = $conn->query("SELECT id, name, subject, bio, img, time FROM teacher ORDER BY id DESC");
 

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../comp/footer/footer.css">
 </head>
 <body>
-<?php include_once("../comp/nav/nav.php"); ?>
+<?php require_once __DIR__ . '/../comp/nav/nav.php';?>
 
 <section class="review-hero">
     <h1><i class="bi bi-chat-heart-fill"></i> Share Your Experience</h1>
@@ -58,7 +58,7 @@
         <div id="formMsg" class="form-msg"></div>
     </form>
 </section>
-<?php include_once("../comp/footer/footer.php"); ?>
+<?php require_once __DIR__ . '/../comp/footer/footer.php'; ?>
 
 <script src="review_page.js"></script>
 </body>

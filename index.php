@@ -3,7 +3,8 @@
 error_reporting(E_ALL);
 
 // home_page/testimonial/testimonial_page.php — public, read-only, sab reviews dikhata hai
-include 'backend/con1.php';
+require_once __DIR__ .  '/backend/con1.php';
+require_once __DIR__ . '/frontend/comp/auth_check.php';
 
 ?>
 <!DOCTYPE html>
@@ -24,9 +25,9 @@ include 'backend/con1.php';
 </head>
 <body>
 
-<?php include_once("home_page/comp/nav/nav.php"); ?>
-<?php include_once("home_page/comp/hero/hero.php"); ?>
-<?php include_once("home_page/about/about_section.php"); ?>
+<?php require_once __DIR__ . '/home_page/comp/nav/nav.php' ; ?>
+<?php require_once __DIR__ . '/home_page/comp/hero/hero.php'; ?>
+<?php require_once __DIR__ . '/home_page/about/about_section.php'; ?>
 
 <section class="modules-preview">
   <div class="modules-inner">
@@ -61,11 +62,11 @@ include 'backend/con1.php';
 
 $achievementLimit = 6;
 $achievementImgPrefix = "";
-include_once("home_page/comp/achievement/achievement_section.php");
+require_once __DIR__ . '/home_page/comp/achievement/achievement_section.php';
 ?>
 
-<?php include_once("home_page/testimonial/testimonial_section.php"); ?>
-<?php include_once("home_page/comp/footer/footer.php"); ?>
+<?php require_once __DIR__ . '/home_page/testimonial/testimonial_section.php'; ?>
+<?php require_once __DIR__ . '/home_page/comp/footer/footer.php'; ?>
 
 <script src="home_page/comp/nav/nav.js"></script>
 <script src="home_page/comp/hero/hero.js"></script>

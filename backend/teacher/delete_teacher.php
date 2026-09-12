@@ -1,7 +1,7 @@
 <?php
 // backend/delete_teacher.php
 header('Content-Type: application/json');
-include '../con1.php';
+require_once __DIR__ . '/../con1.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Invalid request"]);

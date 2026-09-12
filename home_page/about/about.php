@@ -15,11 +15,11 @@
 
 <body>
   <?php
-    include_once("../comp/nav/nav.php");
+    require_once __DIR__ . '/../comp/nav/nav.php';
   
-    include_once("about_section.php");
-
-    include_once("../comp/footer/footer.php");
+    require_once __DIR__ . '/about_section.php';
+    
+    require_once __DIR__ . '/../comp/footer/footer.php';
   ?>
   
 </body>

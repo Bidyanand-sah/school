@@ -1,6 +1,6 @@
 <?php
 // home page/teacher/teacher_page.php — public/client-facing, read-only
-include '../../backend/con1.php';
+require_once __DIR__ . '/../../backend/con1.php';
 
 function getLatestByType($conn, $type) {
     $stmt = $conn->prepare("SELECT id, name, type, subject, bio, img FROM teacher WHERE type = ? ORDER BY id DESC LIMIT 1");
@@ -63,7 +63,7 @@ function printAdminCard($data, $roleLabel) {
 <body data-theme="light-blue">
 
     <?php
-    include_once("../comp/nav/nav.php");
+    require_once __DIR__ . '/../comp/nav/nav.php';
   ?>
 
     <div class="main-content" id="publicContent">
@@ -138,7 +138,7 @@ function printAdminCard($data, $roleLabel) {
         </section>
 
     </div>
-    <?php include_once("../comp/footer/footer.php"); ?>
+    <?php require_once __DIR__ . '/../comp/footer/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="teacher_page.js"></script>

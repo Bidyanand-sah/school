@@ -13,7 +13,7 @@
 </head>
 <body>
 <?php
-    include_once("../comp/nav/nav.php");
+    require_once __DIR__ . '/../comp/nav/nav.php';
   ?>
 <section class="contact-hero">
     <h1><?= htmlspecialchars(getContent('contact_heading')) ?></h1>
@@ -96,7 +96,7 @@
 
     </div>
 </section>
-<?php include_once("../comp/footer/footer.php"); ?>
+<?php require_once __DIR__ . '/../comp/footer/footer.php'; ?>
 
 <script src="contact_page.js"></script>
 </body>

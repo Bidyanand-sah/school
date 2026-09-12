@@ -1,5 +1,5 @@
 <?php
-include '../../backend/con1.php';
+require_once __DIR__ . '/../../backend/con1.php';
 
 $result = $conn->query("SELECT id, title, content, category, pdf, pinned, date FROM notice ORDER BY pinned DESC, id DESC");
 $notices = [];
@@ -21,7 +21,7 @@ while ($row = $result->fetch_assoc()) { $notices[] = $row; }
 <body data-theme="light-blue">
 
     <?php
-    include_once("../comp/nav/nav.php");
+    require_once __DIR__ . '/../comp/nav/nav.php';
   ?>
 
     <div class="np-hero">
@@ -59,7 +59,7 @@ while ($row = $result->fetch_assoc()) { $notices[] = $row; }
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    <?php include_once("../comp/footer/footer.php"); ?>
+    <?php require_once __DIR__ . '/../comp/footer/footer.php'; ?>
 
 </body>
 </html>

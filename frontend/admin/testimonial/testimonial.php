@@ -1,6 +1,6 @@
 <?php
-include '../../../backend/con1.php';
-include '../../comp/auth_check.php';
+require_once __DIR__ . '/../../../backend/con1.php';
+require_once __DIR__ . '/../../comp/auth_check.php';
 
 $result = $conn->query("SELECT id, name, class, review_text, rating, created_at FROM testimonials ORDER BY id DESC");
 $reviews = [];
@@ -30,10 +30,10 @@ function renderStars($rating) {
 </head>
 <body data-theme="light-blue">
 
-<?php include_once('../../comp/nav/nav.php'); ?>
+<?php require_once __DIR__ . '/../../comp/nav/nav.php'; ?>
 
 <div class="main-container">
-    <?php include_once('../../comp/sidebar/sidebar.php'); ?>
+    <?php require_once __DIR__ . '/../../comp/sidebar/sidebar.php'; ?>
 
     <div class="main-content" id="mainContent">
 

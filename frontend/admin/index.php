@@ -1,4 +1,4 @@
-<?php include '../comp/auth_check.php'; ?>
+<?php require_once __DIR__ . '/../comp/auth_check.php'; ?>
 
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 
     <!-- Top Navbar -->
         <?php
-            include_once('../comp/nav/nav.php');
+            require_once __DIR__ . '/../comp/auth_check.php';
         ?>
     <!-- End Navbar  -->
 
@@ -26,7 +26,7 @@
     <div class="main-container">
         <!-- Sidebar -->
             <?php
-                include_once('../comp/sidebar/sidebar.php');
+                require_once __DIR__ . '/../comp/sidebar/sidebar.php';
             ?>
         <!-- Sidebar -->
         

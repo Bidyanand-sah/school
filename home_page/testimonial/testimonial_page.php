@@ -1,5 +1,5 @@
 <?php
-include '../../backend/con1.php';
+require_once __DIR__ . '/../../backend/con1.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +15,11 @@ include '../../backend/con1.php';
     
 </head>
 <body>
-    <?php include_once("../comp/nav/nav.php"); ?>
+    <?php require_once __DIR__ . '/../comp/nav/nav.php'; ?>
 
-    <?php include_once("testimonial_section.php"); ?>
+    <?php require_once __DIR__ . '/testimonial_section.php'; ?>
 
-    <?php include_once("../comp/footer/footer.php"); ?>
+    <?php require_once __DIR__ . '/../comp/footer/footer.php'; ?>
 
     <script src="testimonial_page.js"></script>
 </body>
