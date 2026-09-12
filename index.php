@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 // home_page/testimonial/testimonial_page.php — public, read-only, sab reviews dikhata hai
 require_once __DIR__ .  '/backend/con1.php';
-require_once __DIR__ . '/frontend/comp/auth_check.php';
+// require_once __DIR__ . '/frontend/comp/auth_check.php';
 
 ?>
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ require_once __DIR__ . '/frontend/comp/auth_check.php';
       </a>
       <!-- <a href="/sms_teacher/home_page/contact/contact_page.php" class="module-card"> -->
         <a href="<?= app_url('/home_page/contact/contact_page.php') ?>" class="module-card">
-          
+
         <div class="icon"><i class="fas fa-envelope"></i></div>
         <h3>Contact Us</h3><p>Admission ya kisi bhi query ke liye humse judein.</p>
         <span class="explore">Explore &rarr;</span>
