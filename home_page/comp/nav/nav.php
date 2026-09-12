@@ -13,7 +13,7 @@
 <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
         
-     <a href="/sms_teacher/index.php" class="nav-brand">
+     <a href="<?= app_url('/home_page/index.php') ?>" class="nav-brand">
     <?php if (getContent('site_logo')): ?>
         <img src="<?= getContent('site_logo') ?>" style="height:32px;width:32px;border-radius:6px;object-fit:cover;">
     <?php else: ?>
@@ -25,16 +25,16 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/sms_teacher/index.php">Home</a></li>
-            <li><a href="/sms_teacher/home_page/about/about.php">About</a></li>
-            <li><a href="/sms_teacher/home_page/teacher/teacher_page.php">Teachers</a></li>
-            <li><a href="/sms_teacher/home_page/gallery/gallery_page.php">Gallery</a></li>
-            <li><a href="/sms_teacher/home_page/notice/notice_page.php">Notice Board</a></li>
-            <li><a href="/sms_teacher/home_page/contact/contact_page.php">Contact Us</a></li>
-            <li><a href="/sms_teacher/home_page/review/review_page.php">Review</a></li>
-            <li><a href="/sms_teacher/home_page/testimonial/testimonial_page.php">Testimonial</a></li>
+            <li><a href="<?= app_url('/home_page/index.php') ?>">Home</a></li>
+            <li><a href="<?= app_url('/home_page/about/about.php') ?>">About</a></li>
+            <li><a href="<?= app_url('/home_page/teacher/teacher_page.php') ?>">Teachers</a></li>
+            <li><a href="<?= app_url('/home_page/gallery/gallery_page.php') ?>">Gallery</a></li>
+            <li><a href="<?= app_url('/home_page/notice/notice_page.php') ?>">Notice Board</a></li>
+            <li><a href="<?= app_url('/home_page/contact/contact_page.php') ?>">Contact Us</a></li>
+            <li><a href="<?= app_url('/home_page/review/review_page.php') ?>">Review</a></li>
+            <li><a href="<?= app_url('/home_page/testimonial/testimonial_page.php') ?>">Testimonial</a></li>
 
-         <li><a href="/sms_teacher/backend/login/login.php" class="nav-cta">Login</a></li>
+         <li><a href="<?= app_url('/backend/login/login.php') ?>" class="nav-cta">Login</a></li>
         </ul>
     
     </div>

@@ -66,7 +66,7 @@ foreach ($imageFields as $field) {
                 $oldPath = $uploadDir . basename($content[$field]);
                 if (file_exists($oldPath)) unlink($oldPath);
             }
-            $content[$field] = '/sms_teacher/uploads/site/' . $fileName;
+            $content[$field] = '/uploads/site/' . $fileName;
         } else {
             echo json_encode(["success" => false, "message" => "Failed to upload $field"]);
             exit;

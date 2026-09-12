@@ -25,7 +25,7 @@
         <h1><?= htmlspecialchars(getContent('hero_heading')) ?></h1>
         <p><?= htmlspecialchars(getContent('hero_subtext')) ?></p>
         <div class="hero-actions">
-            <a href="/sms_teacher/home_page/contact/contact_page.php" class="btn-primary">
+            <a href="<?= app_url('/home_page/contact/contact_page.php') ?>" class="btn-primary">
                 Admission Enquiry <i class="fas fa-arrow-right"></i>
             </a>
             <a href="#about" class="btn-outline">Know More</a>

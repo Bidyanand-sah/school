@@ -31,7 +31,7 @@ function renderTpCard($r) {
 <div class="tp-hero">
     <h1><i class="bi bi-chat-quote-fill"></i> What Parents Say</h1>
     <p>Real reviews from our school community</p>
-    <a href="/sms_teacher/home_page/review/review_page.php" class="tp-cta">
+    <a href="<?= app_url('/home_page/review/review_page.php') ?>" class="tp-cta">
         <i class="bi bi-pencil-fill"></i> Write a Review
     </a>
 </div>
