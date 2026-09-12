@@ -57,10 +57,26 @@ function showSection(section) {
 }
 
 // Logout Handler
+// function handleLogout() {
+//      fetch('../../../backend/logout.php', { method: 'POST' })
+//     .then(response => {
+//         // Logout hone ke baad user ko login page par bhej dega
+//         window.location.href = '../../../backend/login/login.php'; 
+//     });
+// }
 function handleLogout() {
-     fetch('../../../backend/logout.php', { method: 'POST' })
+    fetch(window.APP_BASE_URL + '/backend/logout.php', {
+        method: 'POST'
+    })
     .then(response => {
-        // Logout hone ke baad user ko login page par bhej dega
-        window.location.href = '../../../backend/login/login.php'; 
+        if (!response.ok) {
+            throw new Error('Logout failed');
+        }
+
+        window.location.href =
+            window.APP_BASE_URL + '/backend/login/login.php';
+    })
+    .catch(error => {
+        console.error('Logout failed:', error);
     });
 }

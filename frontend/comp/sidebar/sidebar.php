@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../../backend/config.php';
+require_once __DIR__ . '/../../../backend/config.php';
+// require_once __DIR__ . '/../../backend/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -99,5 +100,11 @@ require_once __DIR__ . '/../../backend/config.php';
     });
 })();
 </script>
+
+<script>
+window.APP_BASE_URL = <?= json_encode(BASE_URL) ?>;
+</script>
+
+<script src="<?= app_url('/frontend/comp/sidebar/sidebar.js') ?>"></script>
 </body>
 </html>

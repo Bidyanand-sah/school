@@ -1,6 +1,6 @@
 <?php
 // backend/con1.php se connection le rahe hain
-require_once __DIR__ . '/../../../backend/con1.php';
+require_once __DIR__ . '/../../../backend/config.php';require_once __DIR__ . '/../../../backend/con1.php';
 require_once __DIR__ . '/../../comp/auth_check.php';
 
 function getLatestByType($conn, $type) {

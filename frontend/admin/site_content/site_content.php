@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../../backend/config.php';
 require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php';
 require_once __DIR__ . '/../../comp/auth_check.php';
 ?>
