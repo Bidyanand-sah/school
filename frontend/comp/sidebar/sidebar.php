@@ -26,14 +26,14 @@ require_once __DIR__ . '/../../../backend/config.php';
             <i class="fas fa-th-large"></i>
             <span>Dashboard</span>
         </a>
-        <a class="menu-item active" href="<?= app_url('/home_page/index.php') ?>">
-            <i class="fas fa-th-large"></i>
-            <span>Home</span>
-        </a>
         <!-- <a class="menu-item" onclick="showSection('students')">
             <i class="fas fa-user-graduate"></i>
             <span>Students</span>
         </a> -->
+        <a class="menu-item" href="<?= app_url('/index.php') ?>">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
         <a class="menu-item" href="<?= app_url('/frontend/admin/teacher/teacher.php') ?>">
             <i class="fas fa-chalkboard-teacher"></i>
             <span>Teachers</span>
