@@ -54,9 +54,16 @@ require_once __DIR__ . '/../../../backend/config.php';
             <i class="fas fa-address-card"></i>
             <span>Testimonial</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/site_settings/index.php') ?>">
+        <?php if (($_SESSION['admin_role'] ?? '') === 'superadmin'): ?>
+<a class="menu-item" href="<?= app_url('/frontend/admin/site_settings/index.php') ?>">
     <i class="bi bi-gear-fill"></i>
     <span>Site Settings</span>
+</a>
+<?php endif; ?>
+
+    <a class="menu-item" href="<?= app_url('/frontend/admin/account/account.php') ?>">
+    <i class="bi bi-person-gear"></i>
+    <span>My Account</span>
 </a>
     </div>
 

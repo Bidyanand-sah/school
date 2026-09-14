@@ -2,6 +2,14 @@
 require_once __DIR__ . '/../../../backend/config.php';
 require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php';
 require_once __DIR__ . '/../../comp/auth_check.php';
+if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
+    http_response_code(403);
+    die('<div style="text-align:center;margin-top:80px;font-family:Segoe UI,sans-serif;">
+            <h2 style="color:#0f172a;">Access Denied</h2>
+            <p style="color:#64748b;">Ye page sirf Super Admin dekh sakta hai.</p>
+            <a href="' . app_url('/frontend/admin/index.php') . '" style="display:inline-block;margin-top:14px;background:#1a2639;color:#fff;text-decoration:none;padding:10px 26px;border-radius:30px;font-weight:600;">Go to Dashboard</a>
+         </div>');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

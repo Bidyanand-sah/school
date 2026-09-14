@@ -1,0 +1,142 @@
+* { box-sizing: border-box; }
+
+.main-content {
+    padding: 16px !important;
+    background: #f4f7fc;
+    min-height: calc(100vh - var(--navbar-height));
+}
+
+.acc-header {
+    background: linear-gradient(135deg, #1a2639 0%, #2c3e50 100%);
+    color: #fff;
+    padding: 22px 20px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 24px rgba(26,38,57,0.18);
+}
+.acc-header .brand { font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
+.acc-header .brand i { color: #ffc857; }
+.acc-subtitle { color: #cbd5e1; font-size: 0.85rem; margin: 6px 0 0; }
+
+.acc-wrap { display: flex; justify-content: center; width: 100%; }
+
+.acc-card {
+    background: #fff;
+    border: 1px solid #e9edf3;
+    border-radius: 18px;
+    padding: 24px 20px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+}
+
+.acc-card-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+.acc-avatar {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1a2639, #2c3e50);
+    color: #ffc857;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+}
+.acc-card-top h3 { font-size: 1.08rem; color: #0f172a; margin: 0 0 4px; font-weight: 700; }
+.acc-hint { font-size: 0.78rem; color: #64748b; line-height: 1.5; margin: 0; }
+
+.acc-divider {
+    display: flex; align-items: center; text-align: center;
+    color: #94a3b8; font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin: 22px 0 16px;
+}
+.acc-divider::before, .acc-divider::after { content: ''; flex: 1; height: 1px; background: #e9edf3; }
+.acc-divider span { padding: 0 12px; white-space: nowrap; }
+
+.acc-field { margin-bottom: 16px; }
+.acc-field label { display: block; font-size: 0.82rem; font-weight: 600; color: #1e293b; margin-bottom: 7px; }
+.acc-field label .req { color: #e53935; }
+
+/* ---------- INPUT GROUP — FIXED OVERLAP ---------- */
+.acc-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.acc-input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1rem;
+    pointer-events: none;
+    width: 18px;
+    text-align: center;
+    z-index: 2;
+}
+.acc-input-group input {
+    width: 100%;
+    padding: 13px 46px 13px 46px; /* left space badha di icon ke liye */
+    border: 1.5px solid #dce3ec;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    background: #fafcff;
+    transition: all 0.2s;
+    min-width: 0;
+    line-height: 1.4;
+}
+.acc-input-group input:focus {
+    outline: none;
+    border-color: #1a2639;
+    box-shadow: 0 0 0 4px rgba(26,38,57,0.08);
+    background: #fff;
+}
+.acc-input-group input::placeholder { color: #b0b9c6; font-size: 0.83rem; }
+
+.acc-eye-toggle {
+    position: absolute;
+    right: 6px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+}
+.acc-eye-toggle:hover { background: #f1f5f9; color: #1a2639; }
+
+#updateAccountBtn {
+    width: 100%;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #1a2639, #2c3e50);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 6px 18px rgba(26,38,57,0.28);
+    transition: all 0.25s;
+}
+#updateAccountBtn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(26,38,57,0.38); }
+#updateAccountBtn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+.acc-msg { margin-top: 14px; font-size: 0.85rem; font-weight: 600; text-align: center; min-height: 20px; }
+.acc-msg.success { color: #15803d; }
+.acc-msg.error { color: #dc2626; }
+
+@media (min-width: 640px) {
+    .main-content { padding: 24px !important; }
+    .acc-header { padding: 26px 30px; border-radius: 18px; }
+    .acc-header .brand { font-size: 1.5rem; }
+    .acc-card { padding: 32px 34px; border-radius: 20px; }
+}
+@media (min-width: 992px) { .acc-wrap { justify-content: flex-start; } }
+@media (max-width: 380px) {
+    .acc-card { padding: 18px 14px; }
+    #updateAccountBtn { font-size: 0.88rem; padding: 12px; }
+}

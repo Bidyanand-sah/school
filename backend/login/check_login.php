@@ -16,7 +16,7 @@ if ($username === '' || $password === '') {
     exit;
 }
 
-$stmt = $conn->prepare("SELECT id, username, password FROM admin_users WHERE username = ?");
+$stmt = $conn->prepare("SELECT id, username, password, role FROM admin_users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -34,8 +34,10 @@ if (!password_verify($password, $user['password'])) {
 }
 
 // Login success — session set karo
+// Login success — session set karo
 $_SESSION['admin_id'] = $user['id'];
 $_SESSION['admin_username'] = $user['username'];
+$_SESSION['admin_role'] = $user['role'];
 $_SESSION['logged_in'] = true;
 
 echo json_encode(["success" => true, "message" => "Login successful"]);
