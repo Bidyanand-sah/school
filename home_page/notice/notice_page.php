@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../backend/config.php';
 require_once __DIR__ . '/../../backend/con1.php';
 
 $result = $conn->query("SELECT id, title, content, category, pdf, pinned, date FROM notice ORDER BY pinned DESC, id DESC");
@@ -20,15 +21,18 @@ while ($row = $result->fetch_assoc()) { $notices[] = $row; }
 </head>
 <body data-theme="light-blue">
 
-    <?php
-    require_once __DIR__ . '/../comp/nav/nav.php';
-  ?>
+    <?php require_once __DIR__ . '/../comp/nav/nav.php'; ?>
 
     <div class="np-hero">
         <h1><i class="bi bi-bullhorn me-2"></i>School Notices</h1>
         <p>Latest announcements, circulars &amp; updates</p>
     </div>
 
+    <!-- ============================================================
+         Original design — sara data, no limit, np- classes.
+         Ye notice_section.php se independent hai (wo sirf homepage
+         ke compact preview ke liye hai).
+         ============================================================ -->
     <div class="np-body">
         <?php if (empty($notices)): ?>
             <div class="np-empty">
@@ -50,7 +54,7 @@ while ($row = $result->fetch_assoc()) { $notices[] = $row; }
                         <div class="np-title"><?= htmlspecialchars($n['title']) ?></div>
                         <div class="np-text"><?= nl2br(htmlspecialchars($n['content'])) ?></div>
                         <?php if (!empty($n['pdf'])): ?>
-                            <a class="np-attachment" href="../../<?= htmlspecialchars($n['pdf']) ?>" target="_blank">
+                            <a class="np-attachment" href="<?= htmlspecialchars(app_url($n['pdf'])) ?>" target="_blank">
                                 <i class="bi bi-file-earmark-pdf"></i> Download attachment
                             </a>
                         <?php endif; ?>
