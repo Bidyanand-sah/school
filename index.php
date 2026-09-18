@@ -62,7 +62,7 @@ require_once __DIR__ . '/home_page/comp/achievement/achievement_section.php';
 
 <?php require_once __DIR__ . '/home_page/comp/footer/footer.php'; ?>
 
-<script src="home_page/comp/nav/nav.js"></script>
+<!-- <script src="home_page/comp/nav/nav.js"></script> -->
 <script src="home_page/comp/hero/hero.js"></script>
 
 <script src="home_page/comp/achievement/achievement.js"></script>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design 3: Two-Tier Navbar (Fully Responsive - No Scrollbar)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* =========================================
+     GLOBAL RESET (Scrollbar fix)
+     ========================================= */
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+  }
+  html, body {
+    width: 100%;
+    overflow-x: hidden; /* Horizontal scrollbar band */
+  }
+  body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background: #f4f6f9; 
+  }
+
+  /* =========================================
+     TIER 1: TOP INFO STRIP
+     ========================================= */
+  .top-strip {
+    background: #0f172a;
+    color: #cbd5e1;
+    font-size: 13px;
+    padding: 8px 40px;
+    display: flex;
+    justify-content: space-between; /* Desktop: Left, Center, Right */
+    align-items: center;
+    gap: 15px;
+  }
+  .top-strip .info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .top-strip i { color: #ffc857; }
+  .top-strip .admission {
+    color: #ffc857;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* =========================================
+     TIER 2: MAIN NAVBAR
+     ========================================= */
+  .main-navbar {
+    background: #ffffff;
+    padding: 0 40px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 1000;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .nav-brand i {
+    color: #0f172a;
+    font-size: 1.5rem;
+    background: #ffc857;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  .nav-brand span { 
+    display: flex; 
+    flex-direction: column; 
+    line-height: 1.1; 
+  }
+  .nav-brand span small {
+    font-size: 10px;
+    font-weight: 400;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav-links a {
+    color: #334155;
+    text-decoration: none;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: #0f172a; }
+
+  .nav-links a.active {
+    color: #4a90e2;
+    font-weight: 600;
+  }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 14px;
+    right: 14px;
+    height: 3px;
+    background: #4a90e2;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .nav-links .login-link { color: #334155; font-weight: 600; }
+  .nav-links .login-link:hover { color: #4a90e2; }
+
+  .nav-links .apply-btn {
+    background: #0f172a;
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+  }
+  .nav-links .apply-btn:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+  .hamburger span {
+    width: 26px;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  /* Hero */
+  .hero { text-align: center; padding: 100px 20px; }
+  .hero h1 { font-size: 2.5rem; color: #0f172a; margin-bottom: 10px; }
+  .hero p { font-size: 1.1rem; color: #64748b; }
+
+  /* =========================================
+     MOBILE RESPONSIVE (No Scrollbar, Clean Look)
+     ========================================= */
+  @media (max-width: 992px) {
+    
+    /* Top Strip: Stack items vertically (Left Aligned) */
+    .top-strip {
+      flex-direction: column;
+      align-items: flex-start; /* Left align */
+      gap: 6px;
+      padding: 10px 20px;
+      font-size: 12px;
+    }
+    .top-strip .info-item {
+      justify-content: flex-start;
+    }
+
+    /* Main Navbar */
+    .main-navbar { padding: 0 20px; height: 65px; }
+    .hamburger { display: flex; }
+
+    /* Dropdown Menu */
+    .nav-links {
+      position: absolute;
+      top: 65px;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px 20px 20px;
+      gap: 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+      max-height: calc(100vh - 65px);
+      overflow-y: auto;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { 
+      padding: 14px 10px; 
+      border-bottom: 1px solid #f1f5f9; 
+      text-align: left;
+    }
+    .nav-links a.active::after { display: none; }
+    .nav-links .apply-btn { 
+      text-align: center; 
+      margin-left: 0; 
+      margin-top: 10px; 
+      border-radius: 6px; 
+    }
+  }
+
+  /* Extra Small Phone (e.g., 360px) */
+  @media (max-width: 480px) {
+    .top-strip {
+      padding: 8px 15px;
+      font-size: 11px;
+      gap: 5px;
+    }
+    .top-strip i { font-size: 11px; }
+    
+    .main-navbar { padding: 0 15px; }
+    .nav-brand { font-size: 1rem; }
+    .nav-brand i { font-size: 1.3rem; padding: 6px; }
+    .nav-brand span small { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- TIER 1: Top Info Strip -->
+  <div class="top-strip">
+    <div class="info-item">
+      <i class="fas fa-phone"></i> +91 98765 43210
+    </div>
+    <div class="info-item">
+      <i class="fas fa-envelope"></i> info@school.com
+    </div>
+    <div class="info-item admission">
+      <i class="fas fa-star"></i> Admissions open 2026-27
+    </div>
+  </div>
+
+  <!-- TIER 2: Main Navbar -->
+  <nav class="main-navbar">
+    <a href="#" class="nav-brand">
+      <i class="fas fa-graduation-cap"></i>
+      <span>
+        Bright Future
+        <small>International School</small>
+      </span>
+    </a>
+
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Teachers</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Notices</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#" class="login-link">Login</a></li>
+      <li><a href="#" class="apply-btn">Apply Now</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Welcome to Bright Future</h1>
+    <p>Quality Education for Every Child</p>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

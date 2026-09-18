@@ -1,49 +1,284 @@
-:root{--nav-navy:#1a2639;--nav-navy2:#2c3e50;--nav-gold:#ffc857;--nav-blue:#4a90e2;}
-*{box-sizing:border-box;}
-body{margin:0;}
-.site-nav{position:sticky;top:0;z-index:999;background:rgba(26,38,57,0.97);backdrop-filter:blur(8px);transition:all .3s ease;}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
-.nav-brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;}
-.nav-brand i{color:var(--nav-gold);font-size:1.5rem;}
-.nav-brand em{font-style:normal;font-weight:300;opacity:.85;}
-.nav-links{list-style:none;display:flex;align-items:center;gap:6px;margin:0;padding:0;}
-.nav-links a{color:#e2e8f0;text-decoration:none;padding:10px 16px;border-radius:30px;font-size:.92rem;font-weight:500;transition:all .25s;}
-.nav-links a:hover{background:rgba(255,255,255,.1);color:#fff;}
-.nav-links .nav-cta{background:linear-gradient(135deg,var(--nav-blue),#357abd);color:#fff!important;padding:10px 22px;}
-.nav-links .nav-cta:hover{box-shadow:0 6px 18px rgba(74,144,226,.4);transform:translateY(-1px);}
-.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
-.nav-toggle span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s;}
-.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-.nav-toggle.open span:nth-child(2){opacity:0;}
-.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-@media(max-width:860px){
-  .nav-toggle{display:flex;}
-  .nav-links{position:fixed;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--nav-navy);padding:10px 20px 20px;transform:translateY(-150%);transition:transform .3s ease;gap:2px;}
-  .nav-links.open{transform:translateY(0);}
-  .nav-links a{padding:14px 16px;border-radius:10px;}
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; overflow-x: hidden; }
+body { font-family: 'Segoe UI', sans-serif; }
+
+/* =========================================
+   TIER 1: TOP INFO STRIP
+   ========================================= */
+.top-strip {
+    background: #0f172a;
+    color: #cbd5e1;
+    font-size: 13px;
+    padding: 8px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.2s ease;
+}
+.top-strip .info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.top-strip i { color: #ffc857; }
+.top-strip .admission { color: #ffc857; font-weight: 600; letter-spacing: 0.5px; }
+
+/* Stacked Class (JS adds this when it doesn't fit) */
+.top-strip.stacked {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 20px;
+    font-size: 12px;
 }
 
+/* =========================================
+   TIER 2: MAIN NAVBAR
+   ========================================= */
+.main-navbar {
+    background: #ffffff;
+    padding: 0 40px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: sticky;      /* Sticky taaki dropdown ke saath rahe */
+    top: 0;
+    z-index: 1000;
+}
 
-.navbar-right {
+.nav-brand {
     display: flex;
     align-items: center;
     gap: 12px;
-}
-
-.login-btn {
-    padding: 8px 20px;
-    background: var(--bg-gradient);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    color: #0f172a;
     text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15rem;
 }
-.login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.nav-brand i {
+    color: #0f172a;
+    font-size: 1.5rem;
+    background: #ffc857;
+    padding: 8px;
+    border-radius: 8px;
+}
+.nav-brand span { display: flex; flex-direction: column; line-height: 1.1; }
+.nav-brand span small {
+    font-size: 10px;
+    font-weight: 400;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
 
-/* WhatsApp Floating Button */
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.nav-links a {
+    color: #334155;
+    text-decoration: none;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+}
+.nav-links a:hover { color: #0f172a; }
+
+/* Active Link */
+.nav-links a.active { color: #4a90e2; font-weight: 600; }
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 14px;
+    right: 14px;
+    height: 3px;
+    background: #4a90e2;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Login Link */
+.nav-links .login-link { color: #334155; font-weight: 600; }
+.nav-links .login-link:hover { color: #4a90e2; }
+
+/* Apply Now Button */
+.nav-links .apply-btn {
+    background: #0f172a;
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+.nav-links .apply-btn:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+.hamburger span {
+    width: 26px;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE (Design B: Two-Column Grid)
+   ========================================= */
+@media (max-width: 992px) {
+    .main-navbar { 
+        padding: 0 20px; 
+        height: 65px; 
+        flex-wrap: wrap;       /* Dropdown ko navbar ke andar wrap hone do */
+    }
+    .hamburger { 
+        display: flex; 
+    }
+
+    /* =========================================
+       DROPDOWN MENU (Two-Column Grid, No Scrollbar)
+       ========================================= */
+    .nav-links {
+        position: relative;    /* Navbar ke andar rahe */
+        width: 100%;           /* Poori width le */
+        background: #ffffff;
+        display: none;         /* Initially hidden */
+        padding: 15px;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;  /* 2 Columns */
+        flex-shrink: 0;
+        border-top: 1px solid #f1f5f9;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    }
+    .nav-links.open {
+        display: grid;         /* Grid layout on open */
+    }
+
+    /* Links Styling */
+    .nav-links a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #334155;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        background: #f8fafc;   /* Halka grey background */
+        border-bottom: none;
+    }
+    .nav-links a i {
+        width: 18px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #64748b;
+        transition: all 0.25s ease;
+    }
+
+    /* Hover Effect */
+    .nav-links a:hover {
+        background: #eff6ff;
+        color: #4a90e2;
+        transform: translateY(-2px);
+    }
+    .nav-links a:hover i { 
+        color: #4a90e2; 
+    }
+
+    /* Active Link */
+    .nav-links a.active {
+        background: #eff6ff;
+        color: #4a90e2;
+        font-weight: 600;
+    }
+    .nav-links a.active i { 
+        color: #4a90e2; 
+    }
+    .nav-links a.active::after { 
+        display: none; 
+    }
+
+    /* Login & Apply (Full Width) */
+    .nav-links .login-link,
+    .nav-links .apply-btn {
+        grid-column: span 2;   /* Dono columns me faila hua */
+        justify-content: center;
+        font-weight: 600;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-left: 0;
+    }
+
+    /* Login Button */
+    .nav-links .login-link {
+        background: #4a90e2;
+        color: #fff !important;
+    }
+    .nav-links .login-link i { 
+        color: #fff; 
+    }
+    .nav-links .login-link:hover {
+        background: #357abd;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+    }
+
+    /* Apply Now Button */
+    .nav-links .apply-btn {
+        background: #0f172a;
+        color: #fff !important;
+    }
+    .nav-links .apply-btn i { 
+        color: #fff; 
+    }
+    .nav-links .apply-btn:hover {
+        background: #1e293b;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    }
+}
+
+/* =========================================
+   EXTRA SMALL PHONES
+   ========================================= */
+@media (max-width: 480px) {
+    .main-navbar { padding: 0 15px; }
+    .nav-brand { font-size: 1rem; }
+    .nav-brand i { font-size: 1.3rem; padding: 6px; }
+    .nav-brand span small { font-size: 9px; }
+}
+
+/* =========================================
+   WHATSAPP FLOAT
+   ========================================= */
 .whatsapp-float {
     position: fixed;
     bottom: 24px;
