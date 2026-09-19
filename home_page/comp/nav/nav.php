@@ -11,7 +11,7 @@ require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?= app_url('/home_page/comp/nav/nav.css') ?>">
 </head>
-<body>
+<body class="site-nav">
     
 <!-- =========================================
      TIER 1: TOP INFO STRIP

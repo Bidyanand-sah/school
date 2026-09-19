@@ -43,7 +43,7 @@ body { font-family: 'Segoe UI', sans-serif; }
 .main-navbar {
     background: #ffffff;
     padding: 0 40px;
-    height: 75px;
+    min-height: 75px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -94,6 +94,7 @@ body { font-family: 'Segoe UI', sans-serif; }
     font-weight: 500;
     transition: all 0.2s ease;
     position: relative;
+    white-space: nowrap;
 }
 .nav-links a:hover { color: #0f172a; }
 
@@ -123,6 +124,7 @@ body { font-family: 'Segoe UI', sans-serif; }
     font-weight: 600;
     margin-left: 10px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 .nav-links .apply-btn:hover {
     background: #1e293b;
@@ -150,8 +152,10 @@ body { font-family: 'Segoe UI', sans-serif; }
 
 /* =========================================
    MOBILE RESPONSIVE (Design B: Two-Column Grid)
+   Breakpoint: 1440px (pehle 1200px tha — content
+   ke actual width se match karne ke liye badhaya)
    ========================================= */
-@media (max-width: 992px) {
+@media (max-width: 1440px) {
     .main-navbar { 
         padding: 0 20px; 
         height: 65px; 
@@ -160,6 +164,11 @@ body { font-family: 'Segoe UI', sans-serif; }
     .hamburger { 
         display: flex; 
     }
+
+    /* Logo chhota karo taaki 1-2 lines me fit ho */
+    .nav-brand { font-size: 1rem; }
+    .nav-brand i { font-size: 1.3rem; padding: 6px; }
+    .nav-brand span small { font-size: 9px; }
 
     /* =========================================
        DROPDOWN MENU (Two-Column Grid, No Scrollbar)
@@ -178,6 +187,11 @@ body { font-family: 'Segoe UI', sans-serif; }
     }
     .nav-links.open {
         display: grid;         /* Grid layout on open */
+    }
+
+    /* Navbar ki height auto karo jab dropdown khule */
+    .main-navbar:has(.nav-links.open) {
+        height: auto;
     }
 
     /* Links Styling */
@@ -271,9 +285,9 @@ body { font-family: 'Segoe UI', sans-serif; }
    ========================================= */
 @media (max-width: 480px) {
     .main-navbar { padding: 0 15px; }
-    .nav-brand { font-size: 1rem; }
-    .nav-brand i { font-size: 1.3rem; padding: 6px; }
-    .nav-brand span small { font-size: 9px; }
+    .nav-brand { font-size: 0.95rem; }
+    .nav-brand i { font-size: 1.2rem; padding: 5px; }
+    .nav-brand span small { font-size: 8px; }
 }
 
 /* =========================================

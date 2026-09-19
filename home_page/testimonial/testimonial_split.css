@@ -1,0 +1,162 @@
+/* ============================================================
+   TESTIMONIAL_SPLIT.CSS — sirf index.php ke "home" mode ke liye.
+   testimonial_page.css se bilkul alag classes (ts-*), koi clash nahi.
+   ============================================================ */
+
+.ts-section {
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 34px 40px 40px;
+    border-radius: 24px;
+    background: radial-gradient(circle at 50% 0%, #1a2233 0%, #0e1420 55%, #0a0f18 100%);
+    box-sizing: border-box;
+}
+
+.ts-heading { text-align: center; margin-bottom: 24px; }
+.ts-heading h2 { color: #fff; font-size: 1.7rem; font-weight: 700; margin: 0 0 6px; }
+.ts-heading h2 i { color: #ffc857; margin-right: 8px; }
+.ts-heading p { color: #94a3b8; font-size: 0.88rem; margin: 0; }
+
+/* ---------- SPLIT LAYOUT ---------- */
+.ts-split {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    grid-template-rows: minmax(0, 1fr);   /* row ko container ki height se bandh diya */
+    gap: 28px;
+    align-items: stretch;
+    height: 56vh;
+    min-height: 380px;
+    max-height: 480px;
+}
+
+/* ---------- LEFT: FORM ---------- */
+.ts-form-side {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 22px 22px;
+    min-height: 0;                        /* scroll ke liye zaroori */
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.ts-form-side::-webkit-scrollbar { width: 5px; }
+.ts-form-side::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+
+.ts-form-side h3 { color: #fff; font-size: 1rem; font-weight: 700; margin: 0 0 14px; }
+.ts-form-side h3 i { color: #ffc857; margin-right: 6px; }
+
+.ts-field { margin-bottom: 13px; }
+.ts-field label { display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 5px; }
+.ts-req { color: #f0997b; }
+
+.ts-field input[type="text"],
+.ts-field textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 0.86rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+.ts-field input::placeholder,
+.ts-field textarea::placeholder { color: #64748b; }
+.ts-field textarea { min-height: 68px; resize: vertical; }
+.ts-field input:focus, .ts-field textarea:focus { outline: none; border-color: #ffc857; }
+
+.ts-star-picker { display: flex; gap: 6px; font-size: 1.35rem; }
+.ts-star-picker i { color: #3d4a61; cursor: pointer; transition: color 0.15s, transform 0.15s; }
+.ts-star-picker i.active { color: #ffc857; }
+.ts-star-picker i:hover { transform: scale(1.15); }
+
+.ts-hp-field { position: absolute; left: -9999px; opacity: 0; }
+
+#tsSubmitBtn {
+    width: 100%;
+    background: #ffc857;
+    color: #412402;
+    border: none;
+    padding: 11px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+#tsSubmitBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,200,87,0.3); }
+#tsSubmitBtn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+#tsSubmitBtn i { margin-right: 6px; }
+
+.ts-form-msg { margin-top: 10px; font-size: 0.78rem; font-weight: 500; text-align: center; min-height: 16px; }
+.ts-form-msg.success { color: #5dcaa5; }
+.ts-form-msg.error { color: #f0997b; }
+
+/* ---------- RIGHT: FROSTED GLASS CARDS ---------- */
+.ts-cards-side {
+    min-width: 0;
+    min-height: 0;                        /* scroll ke liye zaroori */
+    overflow: hidden;                     /* safety: kuch bhi bahar nahi niklega */
+}
+
+.ts-cards-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 4px 6px 4px 2px;
+    box-sizing: border-box;
+}
+.ts-cards-scroll::-webkit-scrollbar { width: 5px; }
+.ts-cards-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+
+.ts-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    padding: 16px 18px;
+    flex-shrink: 0;
+}
+.ts-stars { color: #ffc857; font-size: 0.82rem; letter-spacing: 2px; margin-bottom: 6px; }
+.ts-stars .bi-star { color: #5b6478; }
+.ts-text { font-size: 0.83rem; color: #e8ecf3; line-height: 1.5; margin-bottom: 12px; }
+
+.ts-author { display: flex; align-items: center; gap: 10px; }
+.ts-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); color: #fff;
+    font-weight: 700; font-size: 0.75rem;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ts-name { font-weight: 700; font-size: 0.8rem; color: #fff; margin: 0; }
+.ts-role { font-size: 0.7rem; color: #a7b0c2; margin: 0; }
+
+.ts-empty {
+    text-align: center; padding: 40px 20px; color: #6b7386; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.ts-empty i { font-size: 2.2rem; display: block; margin-bottom: 10px; color: #3a4256; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+    .ts-split {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;          /* mobile pe row auto */
+        height: auto;
+        max-height: none;
+    }
+    .ts-form-side { height: auto; max-height: 340px; }
+    .ts-cards-side { height: 320px; }
+}
+
+@media (max-width: 576px) {
+    .ts-section { padding: 24px 16px 30px; margin: 20px auto; border-radius: 18px; }
+    .ts-heading h2 { font-size: 1.3rem; }
+    .ts-form-side { padding: 16px 14px; }
+}

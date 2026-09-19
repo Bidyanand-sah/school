@@ -20,13 +20,16 @@ require_once __DIR__ . '/backend/config.php';
 <link rel="stylesheet" href="home_page/comp/nav/nav.css">
 <link rel="stylesheet" href="home_page/comp/hero/hero.css">
 <link rel="stylesheet" href="home_page/about/about.css">
-<link rel="stylesheet" href="home_page/testimonial/testimonial_page.css">
+
+<!-- <link rel="stylesheet" href="home_page/testimonial/testimonial_page.css"> -->
 
 <link rel="stylesheet" href="home_page/comp/achievement/achievement.css">
 
 <link rel="stylesheet" href="<?= app_url('/home_page/notice/notice_section.css') ?>">
 
 <link rel="stylesheet" href="home_page/gallery/gallery_section.css">
+
+<link rel="stylesheet" href="home_page/testimonial/testimonial_split.css">
 
 <link rel="stylesheet" href="home_page/comp/footer/footer.css">
 <link rel="stylesheet" href="home_page/comp/achievement/achievement.css">
@@ -57,8 +60,10 @@ require_once __DIR__ . '/home_page/comp/achievement/achievement_section.php';
 
 <?php require_once __DIR__ . '/home_page/notice/notice_section.php'; ?>
 
-<?php require_once __DIR__ . '/home_page/testimonial/testimonial_section.php'; ?>
-
+<?php
+$testimonialView = 'home';
+require_once __DIR__ . '/home_page/testimonial/testimonial_section.php';
+?>
 
 <?php require_once __DIR__ . '/home_page/comp/footer/footer.php'; ?>
 
