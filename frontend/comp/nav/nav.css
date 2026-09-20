@@ -103,7 +103,7 @@ body {
     gap: 12px;
 }
 
-.login-btn {
+.logout-btn {
     padding: 8px 20px;
     background: var(--bg-gradient);
     color: white;
@@ -113,9 +113,126 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
 }
-.login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.logout-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
+/* ============================================================
+   🔥 LIVE CLOCK (Naya Add — kuch delete nahi kiya)
+   ============================================================ */
+.live-clock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: var(--bg-gradient);
+    color: #ffffff;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.live-clock:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.4);
+}
+.live-clock i {
+    font-size: 15px;
+    opacity: 0.9;
+}
+.live-clock .clock-divider {
+    opacity: 0.5;
+    margin: 0 2px;
+}
+
+/* ============================================================
+   RESPONSIVE — Purana + Naya (Safe)
+   ============================================================ */
+
+/* Tablet (992px) */
+@media (max-width: 992px) {
+    .live-clock {
+        font-size: 13px;
+        padding: 5px 14px;
+        gap: 6px;
+    }
+    .live-clock .clock-date {
+        display: none; /* Tablet pe sirf day + time */
+    }
+}
+
+/* Mobile (768px) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 12px;
+    }
+    .navbar-left {
+        gap: 10px;
+    }
+    .brand-logo {
+        font-size: 17px;
+    }
+    .brand-logo i {
+        font-size: 22px;
+    }
+    .live-clock {
+        font-size: 12px;
+        padding: 4px 10px;
+        gap: 5px;
+    }
+    .live-clock i {
+        font-size: 13px;
+    }
+    .logout-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+}
+
+/* Small Mobile (480px) */
 @media (max-width: 480px) {
-    .brand-logo span { display: none; }
+    /* Purana: brand-logo span hide */
+    .brand-logo span {
+        display: none;
+    }
+    .live-clock {
+        font-size: 11px;
+        padding: 4px 8px;
+        gap: 4px;
+    }
+    .live-clock .clock-date {
+        display: none;
+    }
+    .live-clock .clock-day {
+        display: none; /* Sirf time */
+    }
+    .live-clock .clock-divider {
+        display: none;
+    }
+    .logout-btn span {
+        display: none; /* Sirf login icon */
+    }
+    .logout-btn {
+        padding: 8px 10px;
+    }
+}
+
+/* Very Small (360px) — Extra safety */
+@media (max-width: 360px) {
+    .navbar {
+        padding: 0 8px;
+    }
+    .live-clock {
+        font-size: 10px;
+        padding: 3px 7px;
+    }
+    .live-clock .clock-time {
+        font-size: 10px;
+    }
 }

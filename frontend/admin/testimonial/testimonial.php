@@ -106,10 +106,10 @@ function renderStars($rating) {
                             <label class="form-label">Name *</label>
                             <input type="text" class="form-control" id="addName" required>
                         </div>
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label class="form-label">Class / Role</label>
-                            <input type="number" class="form-control" id="addClass" placeholder="e.g. Parent, Class 4">
-                        </div> -->
+                            <input type="text" class="form-control" id="addClass" placeholder="e.g. Parent, Class 4">
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Review *</label>
                             <textarea class="form-control" id="addReview" rows="3" maxlength="500" required></textarea>

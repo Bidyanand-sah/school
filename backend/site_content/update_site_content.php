@@ -1,6 +1,15 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    echo json_encode(["success" => false, "message" => "Unauthorized"]);
+    exit;
+}
+if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
+    echo json_encode(["success" => false, "message" => "Only Super Admin can change site settings"]);
+    exit;
+}
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Invalid request"]);
     exit;

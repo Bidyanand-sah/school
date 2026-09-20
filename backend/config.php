@@ -17,21 +17,32 @@ $isLocal = in_array(
 
 
 /* =====================================================
-   BASE URL
+   BASE URL — ab folder ke naam pe depend nahi karta.
+   __DIR__ (ye file kahan hai) minus DOCUMENT_ROOT (htdocs
+   kahan se start hota hai) = beech mein jo bache wahi
+   project ka subfolder-prefix hai (chahe naam "shivam" ho,
+   "rahul" ho, ya "sms_teacher").
    ===================================================== */
 
 if ($isLocal) {
 
-    // XAMPP:
-    // http://localhost/sms_teacher/
+    // Windows ke backslashes ko forward-slash me normalize karo,
+    // taaki comparison sahi se ho (URLs hamesha forward-slash use karte hain)
+    $projectDir = str_replace('\\', '/', __DIR__);           // .../htdocs/<folder>/backend
+    $docRoot    = str_replace('\\', '/', rtrim($_SERVER['DOCUMENT_ROOT'] ?? '', '/\\'));
 
-    define('BASE_URL', '/sms_teacher');
+    // docRoot ko project path se hata do — jo bacha wahi prefix hai
+    $relative = $docRoot !== '' ? str_replace($docRoot, '', $projectDir) : $projectDir;
+
+    // is file ka apna folder "backend" hai, project root nahi —
+    // isliye last "/backend" segment ko hata do
+    $relative = preg_replace('#/backend$#', '', $relative);
+
+    define('BASE_URL', $relative);
 
 } else {
 
-    // InfinityFree:
-    // https://yourdomain.com/
-
+    // Server pe project seedha htdocs ke andar hota hai, koi prefix nahi
     define('BASE_URL', '');
 }
 
@@ -52,13 +63,6 @@ function app_url($path = '')
     if (preg_match('#^(?:https?:)?//#i', $path)) {
         return $path;
     }
-
-    // Purana /sms_teacher prefix hata do
-    $path = preg_replace(
-        '#^/sms_teacher(?:/|$)#i',
-        '/',
-        $path
-    );
 
     // Starting slash ensure karo
     $path = '/' . ltrim($path, '/');

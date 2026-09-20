@@ -62,7 +62,7 @@ if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
                 <label>Logo</label>
                 <div class="img-preview-row">
                     <?php if (getContent('site_logo')): ?>
-                        <img src="<?= htmlspecialchars(app_url(getContent('site_logo'))) ?>"> id="logoPreview" class="preview-img">
+                        <img src="<?= htmlspecialchars(app_url(getContent('site_logo'))) ?>" id="logoPreview" class="preview-img">
                     <?php else: ?>
                         <img src="#" id="logoPreview" class="preview-img" style="display:none;">
                     <?php endif; ?>
@@ -110,7 +110,7 @@ if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
                 <label>Background Image</label>
                 <div class="img-preview-row">
                     <?php if (getContent('hero_bg')): ?>
-                       <img src="<?= htmlspecialchars(app_url(getContent('hero_bg'))) ?>"> id="heroBgPreview" class="preview-img">
+                       <img src="<?= htmlspecialchars(app_url(getContent('hero_bg'))) ?>" id="heroBgPreview" class="preview-img">
                     <?php else: ?>
                         <img src="#" id="heroBgPreview" class="preview-img" style="display:none;">
                     <?php endif; ?>
@@ -201,7 +201,7 @@ if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
                 <label>Image</label>
                 <div class="img-preview-row">
                     <?php if (getContent('about_img')): ?>
-                        <img src="<?= htmlspecialchars(app_url(getContent('about_img'))) ?>">id="aboutImgPreview" class="preview-img">
+                        <img src="<?= htmlspecialchars(app_url(getContent('about_img'))) ?>" id="aboutImgPreview" class="preview-img">
                     <?php else: ?>
                         <img src="#" id="aboutImgPreview" class="preview-img" style="display:none;">
                     <?php endif; ?>

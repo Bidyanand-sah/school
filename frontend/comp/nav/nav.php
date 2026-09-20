@@ -13,17 +13,24 @@
             </button>
             <div class="brand-logo">
                 <i class="fas fa-school"></i>
-                <span>EduManage</span>
+                <span>Manage</span>
             </div>
         </div>
 
-        <div>Text</div>
+        <!-- 🔥 LIVE CLOCK (Text ki jagah) -->
+<div class="live-clock" id="liveClock" title="Current Date & Time">
+    <i class="fas fa-clock"></i>
+    <span class="clock-day" id="clockDay">Mon</span>
+    <span class="clock-date" id="clockDate">23 Oct 2024</span>
+    <span class="clock-divider">|</span>
+    <span class="clock-time" id="clockTime">10:45:00 AM</span>
+</div>
 
         <div class="navbar-right">
-            <button class="login-btn" >
-                <i class="fas fa-sign-in-alt"></i> Login
-            </button>
-        </div>
+    <button class="logout-btn" onclick="handleLogout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+</div>
     </nav>
 </body>
 </html>

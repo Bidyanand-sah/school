@@ -18,7 +18,7 @@ if ($honeypot !== '') {
 }
 
 $name        = trim($_POST['name'] ?? '');
-$studentClass = trim($_POST['class'] ?? 'Parent');
+$studentClass = trim($_POST['class'] ?? '');
 $reviewText  = trim($_POST['review_text'] ?? '');
 $rating      = intval($_POST['rating'] ?? 5);
 
