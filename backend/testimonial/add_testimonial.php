@@ -1,6 +1,7 @@
 <?php
 // backend/testimonial/add_testimonial.php
 // Public review page aur Admin panel dono isi file ko call karte hain
+require_once __DIR__ . '/../comp/api_auth.php';
 header('Content-Type: application/json');
 require_once __DIR__ . '/../con1.php';
 

@@ -6,10 +6,11 @@
     box-sizing: border-box;
 }
 
-.ach-heading { text-align: center; margin-bottom: 24px; }
-.ach-heading h2 { color: #fff; font-size: 1.7rem; font-weight: 700; margin: 0 0 6px; }
+.ach-heading { text-align: center; margin-bottom: 24px;
+color: #111111; }
+.ach-heading h2 { color: #0f0e0e; font-size: 1.7rem; font-weight: 700; margin: 0 0 6px; }
 .ach-heading h2 i { color: #ffc857; margin-right: 8px; }
-.ach-heading p { color: #94a3b8; font-size: 0.9rem; margin: 0; }
+.ach-heading p { color: #111111; font-size: 0.9rem; margin: 0; }
 
 .ach-outer-wrap {
     display: flex;

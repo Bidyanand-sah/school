@@ -1,13 +1,9 @@
 <?php
 // backend/delete_teacher.php
+require_once __DIR__ . '/../comp/api_auth.php';
 header('Content-Type: application/json');
 require_once __DIR__ . '/../con1.php';
 
-session_start();
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    echo json_encode(["success" => false, "message" => "Unauthorized"]);
-    exit;
-}
 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

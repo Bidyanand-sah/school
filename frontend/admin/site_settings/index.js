@@ -39,7 +39,7 @@ document.getElementById('saveAllBtn').addEventListener('click', function() {
 
     // Collect all form data
     const fields = [
-        'site_name', 'whatsapp_number', 'whatsapp_message',
+        'site_name','site_tagline', 'whatsapp_number', 'whatsapp_message',
         'hero_heading', 'hero_subtext',
         'hero_badge_text',
         'stat1_value', 'stat1_label',

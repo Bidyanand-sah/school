@@ -42,8 +42,8 @@ require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php';
             <i class="fas fa-graduation-cap"></i>
         <?php endif; ?>
         <span>
-            <?= htmlspecialchars(getContent('site_name') ?: 'Bright Future') ?>
-            <small><?= htmlspecialchars(getContent('site_tagline') ?: 'International School') ?></small>
+            <?= htmlspecialchars(getContent('site_name')) ?>
+            <small><?= htmlspecialchars(getContent('site_tagline')) ?></small>
         </span>
     </a>
 

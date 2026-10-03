@@ -16,7 +16,7 @@ if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Settings - Admin Panel</title>
+    <title>Site Settings</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../comp/nav/nav.css">
@@ -55,6 +55,11 @@ if (($_SESSION['admin_role'] ?? '') !== 'superadmin') {
                 <span class="field-icon"><i class="bi bi-mortarboard-fill"></i></span>
                 <label>School Name</label>
                 <input type="text" id="site_name" value="<?= htmlspecialchars(getContent('site_name')) ?>">
+            </div>
+            <div class="field-card">
+                <span class="field-icon"><i class="bi bi-mortarboard-fill"></i></span>
+                <label>Tag Line</label>
+                <input type="text" id="site_tagline" value="<?= htmlspecialchars(getContent('site_tagline')) ?>">
             </div>
 
             <div class="field-card">

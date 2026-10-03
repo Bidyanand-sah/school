@@ -11,7 +11,7 @@ require_once __DIR__ . '/../../comp/auth_check.php';
     <link rel="stylesheet" href="../../comp/nav/nav.css">
     <link rel="stylesheet" href="../../comp/sidebar/sidebar.css">
     <link rel="stylesheet" href="site_content.css">
-    <title>Site Content - Admin Panel</title>
+    <title>Site Content</title>
 </head>
 <body data-theme="light-blue">
 <?php require_once __DIR__ . '/../../comp/nav/nav.php'; ?>

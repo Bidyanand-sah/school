@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../../backend/site_content/site_content_helper.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Footer</title>
   <!-- <link rel="stylesheet" href="footer.css"> -->
     <link rel="stylesheet" href="<?= app_url('/home_page/comp/footer/footer.css') ?>">
 </head>

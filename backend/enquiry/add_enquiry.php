@@ -1,5 +1,6 @@
 <?php
 // backend/add_enquiry.php
+require_once __DIR__ . '/../comp/api_auth.php';
 header('Content-Type: application/json');
 require_once __DIR__ . '/../con1.php';
 
