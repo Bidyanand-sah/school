@@ -17,11 +17,17 @@ $detail = trim($_POST['detail'] ?? '');
 $imgPath = "";
 
 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $allowedImageTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+    $allowedImageTypes = [
+        'image/jpeg', 'image/jpg', 'image/pjpeg',
+        'image/png',
+        'image/webp',
+        'image/gif',
+        'image/bmp', 'image/x-ms-bmp',
+    ];
     $fileType = mime_content_type($_FILES['image']['tmp_name']);
 
     if (!in_array($fileType, $allowedImageTypes)) {
-        echo json_encode(["success" => false, "message" => "Only JPG, PNG, WEBP images allowed"]);
+        echo json_encode(["success" => false, "message" => "This images format not allowed"]);
         exit;
     }
     if ($_FILES['image']['size'] > 20 * 1024 * 1024) {
