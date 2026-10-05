@@ -1,5 +1,6 @@
 /* ADD PHOTO */
-document.getElementById('savePhotoBtn').addEventListener('click', function () {
+document.getElementById('savePhotoBtn').addEventListener('click', async function () {
+    const btn = this;
     const imageFile = document.getElementById('gImage').files[0];
     const detail = document.getElementById('gDetail').value.trim();
 
@@ -8,30 +9,37 @@ document.getElementById('savePhotoBtn').addEventListener('click', function () {
         return;
     }
 
-    const formData = new FormData();
-    formData.append('image', imageFile);
-    formData.append('detail', detail);
-
-    const btn = document.getElementById('savePhotoBtn');
+    const originalHtml = '<i class="bi bi-check-lg"></i> Add Photo';
     btn.disabled = true;
-    btn.innerHTML = 'Saving...';
+    btn.innerHTML = 'Converting...';
 
-    fetch('../../../backend/gallery/add_gallery.php', { method: 'POST', body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert(data.message);
-                btn.disabled = false;
-                btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Photo';
-            }
-        })
-        .catch(err => {
-            alert('Something went wrong: ' + err.message);
-            btn.disabled = false;
-            btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Photo';
+    try {
+        const jpegBlob = await convertToJpeg(imageFile);
+
+        const formData = new FormData();
+        formData.append('image', jpegBlob, 'photo.jpg');
+        formData.append('detail', detail);
+
+        btn.innerHTML = 'Saving...';
+
+        const res = await fetch('../../../backend/gallery/add_gallery.php', {
+            method: 'POST',
+            body: formData
         });
+        const data = await res.json();
+
+        if (data.success) {
+            location.reload();
+        } else {
+            alert(data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }
+    } catch (err) {
+        alert(err.message || 'Something went wrong');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
 });
 
 /* DELETE */
@@ -79,26 +87,45 @@ document.addEventListener('click', function (e) {
 });
 
 /* UPDATE PHOTO */
-document.getElementById('updatePhotoBtn').addEventListener('click', function () {
+document.getElementById('updatePhotoBtn').addEventListener('click', async function () {
+    const btn = this;
     const id = document.getElementById('editId').value;
     const detail = document.getElementById('editDetail').value.trim();
     const imageFile = document.getElementById('editImage').files[0];
 
-    const formData = new FormData();
-    formData.append('id', id);
-    formData.append('detail', detail);
-    if (imageFile) formData.append('image', imageFile);
+    const originalHtml = '<i class="bi bi-check-lg"></i> Update Photo';
+    btn.disabled = true;
+    btn.innerHTML = imageFile ? 'Converting...' : 'Saving...';
 
-    fetch('../../../backend/gallery/update_gallery.php', { method: 'POST', body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(err => alert('Network error: ' + err.message));
+    try {
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('detail', detail);
+
+        if (imageFile) {
+            const jpegBlob = await convertToJpeg(imageFile);
+            formData.append('image', jpegBlob, 'photo.jpg');
+            btn.innerHTML = 'Saving...';
+        }
+
+        const res = await fetch('../../../backend/gallery/update_gallery.php', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            location.reload();
+        } else {
+            alert('Error: ' + data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }
+    } catch (err) {
+        alert(err.message || 'Something went wrong');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
 });
 
 function updatePhotoCount() {

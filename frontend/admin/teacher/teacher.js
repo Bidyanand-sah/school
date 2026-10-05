@@ -1,5 +1,5 @@
 /* ================================================================
-   MODAL — TYPE FIELD TOGGLE (Subject required only for "Teacher")
+   MODAL: TYPE FIELD TOGGLE (Subject required only for "Teacher")
 ================================================================ */
 document.getElementById('tType').addEventListener('change', function () {
     const subjectInput = document.getElementById('tSubject');
@@ -12,9 +12,10 @@ document.getElementById('tType').addEventListener('change', function () {
 });
 
 /* ================================================================
-   ADD TEACHER — send form data to add_teacher.php
+   ADD TEACHER
 ================================================================ */
-document.getElementById('saveTeacherBtn').addEventListener('click', function () {
+document.getElementById('saveTeacherBtn').addEventListener('click', async function () {
+    const btn = this;
     const form = document.getElementById('addTeacherForm');
 
     const name = document.getElementById('tName').value.trim();
@@ -32,40 +33,44 @@ document.getElementById('saveTeacherBtn').addEventListener('click', function () 
         return;
     }
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('type', type);
-    formData.append('subject', subject);
-    formData.append('bio', bio);
-    if (imageFile) formData.append('image', imageFile);
-
-    const btn = document.getElementById('saveTeacherBtn');
+    const originalHtml = '<i class="bi bi-check-lg"></i> Add Teacher';
     btn.disabled = true;
-    btn.innerHTML = 'Saving...';
+    btn.innerHTML = imageFile ? 'Converting...' : 'Saving...';
 
-    fetch('../../../backend/teacher/add_teacher.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                form.reset();
-                const modal = bootstrap.Modal.getInstance(document.getElementById('addTeacherModal'));
-                modal.hide();
-                location.reload(); // page reload — PHP fresh data ke saath re-render karega
-            } else {
-                alert(data.message);
-                btn.disabled = false;
-                btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Teacher';
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            alert('Something went wrong. Please try again.');
-            btn.disabled = false;
-            btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Teacher';
+    try {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('type', type);
+        formData.append('subject', subject);
+        formData.append('bio', bio);
+
+        if (imageFile) {
+            const jpegBlob = await convertToJpeg(imageFile);
+            formData.append('image', jpegBlob, 'photo.jpg');
+            btn.innerHTML = 'Saving...';
+        }
+
+        const res = await fetch('../../../backend/teacher/add_teacher.php', {
+            method: 'POST',
+            body: formData
         });
+        const data = await res.json();
+
+        if (data.success) {
+            form.reset();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addTeacherModal'));
+            if (modal) modal.hide();
+            location.reload();
+        } else {
+            alert(data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }
+    } catch (err) {
+        alert(err.message || 'Something went wrong');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
 });
 
 /* ================================================================
@@ -104,8 +109,11 @@ function setupScrollArrows() {
 }
 
 document.addEventListener('DOMContentLoaded', setupScrollArrows);
-// ---- DELETE (fully functional) ----
-document.addEventListener('click', function(e) {
+
+/* ================================================================
+   DELETE
+================================================================ */
+document.addEventListener('click', function (e) {
     const deleteBtn = e.target.closest('.btn-delete');
     if (!deleteBtn) return;
 
@@ -140,8 +148,11 @@ document.addEventListener('click', function(e) {
     })
     .catch(err => alert('Network error: ' + err.message));
 });
-// ========== EDIT: Open modal from card's data attributes ==========
-document.addEventListener('click', function(e) {
+
+/* ================================================================
+   EDIT: open modal from card's data attributes
+================================================================ */
+document.addEventListener('click', function (e) {
     const editBtn = e.target.closest('.btn-edit');
     if (!editBtn) return;
 
@@ -157,7 +168,6 @@ document.addEventListener('click', function(e) {
         return;
     }
 
-    // Populate the edit modal
     document.getElementById('editId').value = id;
     document.getElementById('editName').value = card.dataset.name || '';
     document.getElementById('editType').value = card.dataset.type || '';
@@ -165,7 +175,6 @@ document.addEventListener('click', function(e) {
     document.getElementById('editBio').value = card.dataset.bio || '';
     document.getElementById('editIdDisplay').value = id;
 
-    // Show image preview if exists
     const imgSrc = card.dataset.img || '';
     const previewImg = document.getElementById('editPreviewImg');
     if (imgSrc) {
@@ -175,16 +184,16 @@ document.addEventListener('click', function(e) {
         previewImg.style.display = 'none';
     }
 
-    // Clear file input
     document.getElementById('editImage').value = '';
 
-    // Open the modal
-    const modal = new bootstrap.Modal(document.getElementById('editTeacherModal'));
-    modal.show();
+    new bootstrap.Modal(document.getElementById('editTeacherModal')).show();
 });
 
-// ========== UPDATE: Submit the edit form ==========
-document.getElementById('updateTeacherBtn').addEventListener('click', function() {
+/* ================================================================
+   UPDATE
+================================================================ */
+document.getElementById('updateTeacherBtn').addEventListener('click', async function () {
+    const btn = this;
     const id = document.getElementById('editId').value;
     const name = document.getElementById('editName').value.trim();
     const type = document.getElementById('editType').value;
@@ -201,38 +210,48 @@ document.getElementById('updateTeacherBtn').addEventListener('click', function()
         return;
     }
 
-    const formData = new FormData();
-    formData.append('id', id);
-    formData.append('name', name);
-    formData.append('type', type);
-    formData.append('subject', subject);
-    formData.append('bio', bio);
-    if (imageFile) {
-        formData.append('image', imageFile);
-    }
+    const originalHtml = '<i class="bi bi-check-lg"></i> Update Teacher';
+    btn.disabled = true;
+    btn.innerHTML = imageFile ? 'Converting...' : 'Saving...';
 
-    fetch('../../../backend/teacher/update_teacher.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
+    try {
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('name', name);
+        formData.append('type', type);
+        formData.append('subject', subject);
+        formData.append('bio', bio);
+
+        if (imageFile) {
+            const jpegBlob = await convertToJpeg(imageFile);
+            formData.append('image', jpegBlob, 'photo.jpg');
+            btn.innerHTML = 'Saving...';
+        }
+
+        const res = await fetch('../../../backend/teacher/update_teacher.php', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+
         if (data.success) {
             alert('Teacher updated successfully!');
             location.reload();
         } else {
             alert('Error: ' + data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
         }
-    })
-    .catch(err => alert('Network error: ' + err.message));
+    } catch (err) {
+        alert(err.message || 'Something went wrong');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
 });
 
-// ========== DELETE (already working) ==========
-// Keep your existing delete code – it should work fine.
-// (If you have it, leave it; if not, add it from earlier.)
-
-
-// Helper to update stats after delete
+/* ================================================================
+   HELPER: stats update after delete
+================================================================ */
 function updateStats() {
     const totalTeachers = document.querySelectorAll('.teacher-card, .admin-card[data-id]:not([data-id="0"])').length;
     const totalImages = document.querySelectorAll('.teacher-card .img-wrap img, .admin-card .img-wrap img').length;

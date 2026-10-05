@@ -1,23 +1,36 @@
 <?php
-// backend/update_teacher.php
 require_once __DIR__ . '/../comp/api_auth.php';
 header('Content-Type: application/json');
 require_once __DIR__ . '/../con1.php';
-
-
 require_once __DIR__ . '/../comp/image_helper.php';
 
+@ini_set('memory_limit', '256M');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(["success" => false, "message" => "Invalid request"]);
     exit;
 }
 
-$id          = intval($_POST['id'] ?? 0);
-$name        = trim($_POST['name'] ?? '');
-$type        = trim($_POST['type'] ?? '');
-$subject     = trim($_POST['subject'] ?? '');
-$bio         = trim($_POST['bio'] ?? '');
+function uploadErrorMessage($code) {
+    switch ($code) {
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            return "Image server ki upload limit se badi hai";
+        case UPLOAD_ERR_PARTIAL:
+            return "Image adhoori upload hui, dobara try karo";
+        case UPLOAD_ERR_NO_TMP_DIR:
+        case UPLOAD_ERR_CANT_WRITE:
+            return "Server par image save nahi ho paayi";
+        default:
+            return "Image upload failed";
+    }
+}
+
+$id      = intval($_POST['id'] ?? 0);
+$name    = trim($_POST['name'] ?? '');
+$type    = trim($_POST['type'] ?? '');
+$subject = trim($_POST['subject'] ?? '');
+$bio     = trim($_POST['bio'] ?? '');
 
 $allowedTypes = ['Director', 'Principal', 'Vice Principal', 'Teacher'];
 
@@ -34,75 +47,102 @@ if ($type === 'Teacher' && $subject === '') {
     exit;
 }
 
-// Step 1: Get current image path (if any)
+/* ---------- Current record ---------- */
 $stmt = $conn->prepare("SELECT img FROM teacher WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
-$result = $stmt->get_result();
-$current = $result->fetch_assoc();
+$current = $stmt->get_result()->fetch_assoc();
 $stmt->close();
+
 if (!$current) {
     echo json_encode(["success" => false, "message" => "Teacher not found"]);
     exit;
 }
-$oldImg = $current['img'];
 
-// Step 2: Handle new image upload if provided
-$imgPath = $oldImg; // keep old by default
-if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $allowed = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-    $fileType = mime_content_type($_FILES['image']['tmp_name']);
-    if (!in_array($fileType, $allowed)) {
-        echo json_encode(["success" => false, "message" => "Only JPG, PNG, WEBP images allowed"]);
+$oldImg      = $current['img'];
+$imgPath     = $oldImg;
+$newImgSaved = false;
+$targetPath  = "";
+
+/* ---------- Nayi image (optional) ---------- */
+if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+
+    if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+        echo json_encode(["success" => false, "message" => uploadErrorMessage($_FILES['image']['error'])]);
+        exit;
+    }
+    if (getImageMime($_FILES['image']['tmp_name']) === false) {
+        echo json_encode(["success" => false, "message" => "Ye image format support nahi hai"]);
         exit;
     }
     if ($_FILES['image']['size'] > 20 * 1024 * 1024) {
         echo json_encode(["success" => false, "message" => "Image size should be under 20MB"]);
         exit;
     }
+
     $uploadDir = __DIR__ . "/../../uploads/teachers/";
     if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
-   
-    $fileName = uniqid("achievement_", true) . ".jpg";
 
-    
-    
+    $fileName   = uniqid("teacher_", true) . ".jpg";
     $targetPath = $uploadDir . $fileName;
-    if (compressAndSaveImage($_FILES['image']['tmp_name'], $targetPath)) {
 
-        // Delete old image file if exists
-        if (!empty($oldImg)) {
-            $oldFilePath = __DIR__ . "/../../" . $oldImg;
-            if (file_exists($oldFilePath)) unlink($oldFilePath);
-        }
-        $imgPath = "uploads/teachers/" . $fileName;
-    } else {
-        echo json_encode(["success" => false, "message" => "Image upload failed"]);
+    if (!compressAndSaveImage($_FILES['image']['tmp_name'], $targetPath)) {
+        echo json_encode(["success" => false, "message" => "Image process nahi ho payi"]);
         exit;
     }
+
+    $imgPath     = "uploads/teachers/" . $fileName;
+    $newImgSaved = true;
 }
 
-// Step 3: Auto‑replace logic for single‑only types (Director/Principal/Vice Principal)
-$singleOnlyTypes = ['Director', 'Principal', 'Vice Principal'];
-if (in_array($type, $singleOnlyTypes)) {
-    // Delete any other entry with same type (except the one we are updating)
-    $delStmt = $conn->prepare("DELETE FROM teacher WHERE type = ? AND id != ?");
-    $delStmt->bind_param("si", $type, $id);
-    $delStmt->execute();
-    $delStmt->close();
-    // Also delete image files of those removed entries? (optional, but we can skip to keep simple)
-}
-
-// Step 4: Update the teacher
+/* ---------- Pehle DB update ---------- */
 $updateStmt = $conn->prepare("UPDATE teacher SET name=?, type=?, subject=?, bio=?, img=? WHERE id=?");
 $updateStmt->bind_param("sssssi", $name, $type, $subject, $bio, $imgPath, $id);
 $success = $updateStmt->execute();
+$dbError = $updateStmt->error;
 $updateStmt->close();
 
-if ($success) {
-    echo json_encode(["success" => true, "message" => "Teacher updated successfully"]);
-} else {
-    echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
+if (!$success) {
+    if ($newImgSaved && file_exists($targetPath)) unlink($targetPath);
+    echo json_encode(["success" => false, "message" => "Database error: " . $dbError]);
+    $conn->close();
+    exit;
 }
+
+/* ---------- DB safal, ab purani image delete ---------- */
+if ($newImgSaved && !empty($oldImg)) {
+    $oldFilePath = __DIR__ . "/../../" . $oldImg;
+    if (file_exists($oldFilePath)) unlink($oldFilePath);
+}
+
+/* ---------- Leadership type: same type ki baaki entries hatao (files bhi) ---------- */
+$singleOnlyTypes = ['Director', 'Principal', 'Vice Principal'];
+
+if (in_array($type, $singleOnlyTypes)) {
+    $othersStmt = $conn->prepare("SELECT img FROM teacher WHERE type = ? AND id != ?");
+    $othersStmt->bind_param("si", $type, $id);
+    $othersStmt->execute();
+    $othersResult = $othersStmt->get_result();
+
+    $otherImgs = [];
+    while ($row = $othersResult->fetch_assoc()) {
+        if (!empty($row['img'])) $otherImgs[] = $row['img'];
+    }
+    $othersStmt->close();
+
+    $delStmt = $conn->prepare("DELETE FROM teacher WHERE type = ? AND id != ?");
+    $delStmt->bind_param("si", $type, $id);
+    $deleted = $delStmt->execute();
+    $delStmt->close();
+
+    if ($deleted) {
+        foreach ($otherImgs as $oi) {
+            $p = __DIR__ . "/../../" . $oi;
+            if (file_exists($p)) unlink($p);
+        }
+    }
+}
+
+echo json_encode(["success" => true, "message" => "Teacher updated successfully"]);
 $conn->close();
 ?>

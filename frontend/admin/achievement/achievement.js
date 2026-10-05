@@ -1,8 +1,11 @@
-
 /* ============================================================
-   ACHIEVEMENTS — same pattern as photos above
-   ============================================================ */
-document.getElementById('saveAchievementBtn').addEventListener('click', function () {
+   ACHIEVEMENTS ADMIN — add / edit / delete
+   Har image upload se pehle browser mein JPEG mein convert hoti hai
+
+/* ---------- ADD ACHIEVEMENT ---------- */
+
+document.getElementById('saveAchievementBtn').addEventListener('click', async function () {
+    const btn = this;
     const imageFile = document.getElementById('achImage').files[0];
     const title = document.getElementById('achTitle').value.trim();
     const description = document.getElementById('achDescription').value.trim();
@@ -18,43 +21,43 @@ document.getElementById('saveAchievementBtn').addEventListener('click', function
         return;
     }
 
-    const formData = new FormData();
-    formData.append('image', imageFile);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('category', category);
-    formData.append('is_pinned', isPinned);
-
-    const btn = document.getElementById('saveAchievementBtn');
+    const originalHtml = '<i class="bi bi-check-lg"></i> Add Achievement';
     btn.disabled = true;
-    btn.innerHTML = 'Saving...';
+    btn.innerHTML = 'Converting...';
 
-   fetch('../../../backend/achievement/add_achievement.php', { method: 'POST', body: formData })
-        .then(res => res.json())
-        .then(data => {
-           if (data.success) {
-              location.reload();
-           } else {
-              // alert(data.message);
-               console.log('error in then section to didnot save ');
-               btn.disabled = false;
-              btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Achievement';
-           }
-        })
-       .catch(err => {
-          //alert('Something went wrong: ' + err.message);
-       console.log('error in catch block')
-           btn.disabled = false;
-           btn.innerHTML = '<i class="bi bi-check-lg"></i> Add Achievement';
-      });
-    
+    try {
+        const jpegBlob = await convertToJpeg(imageFile);
+
+        const formData = new FormData();
+        formData.append('image', jpegBlob, 'photo.jpg');
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('category', category);
+        formData.append('is_pinned', isPinned);
+
+        btn.innerHTML = 'Saving...';
+
+        const res = await fetch('../../../backend/achievement/add_achievement.php', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            location.reload();
+        } else {
+            alert(data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }
+    } catch (err) {
+        alert(err.message || 'Something went wrong');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
 });
 
-
-//yaha se new code hai
-
-//or yaha khatam hai wo new code
-
+/* ---------- DELETE ACHIEVEMENT ---------- */
 
 document.addEventListener('click', function (e) {
     const deleteBtn = e.target.closest('.btn-delete-ach');
@@ -82,6 +85,8 @@ document.addEventListener('click', function (e) {
     .catch(err => alert('Network error: ' + err.message));
 });
 
+/* ---------- OPEN EDIT MODAL ---------- */
+
 document.addEventListener('click', function (e) {
     const editBtn = e.target.closest('.btn-edit-ach');
     if (!editBtn) return;
@@ -101,7 +106,10 @@ document.addEventListener('click', function (e) {
     new bootstrap.Modal(document.getElementById('editAchievementModal')).show();
 });
 
-document.getElementById('updateAchievementBtn').addEventListener('click', function () {
+/* ---------- UPDATE ACHIEVEMENT ---------- */
+
+document.getElementById('updateAchievementBtn').addEventListener('click', async function () {
+    const btn = this;
     const id = document.getElementById('editAchId').value;
     const title = document.getElementById('editAchTitle').value.trim();
     const description = document.getElementById('editAchDescription').value.trim();
@@ -114,25 +122,45 @@ document.getElementById('updateAchievementBtn').addEventListener('click', functi
         return;
     }
 
-    const formData = new FormData();
-    formData.append('id', id);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('category', category);
-    formData.append('is_pinned', isPinned);
-    if (imageFile) formData.append('image', imageFile);
+    const originalHtml = '<i class="bi bi-check-lg"></i> Update Achievement';
+    btn.disabled = true;
+    btn.innerHTML = imageFile ? 'Converting...' : 'Saving...';
 
-    fetch('../../../backend/achievement/update_achievement.php', { method: 'POST', body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(err => alert('Network error: ' + err.message));
+    try {
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('category', category);
+        formData.append('is_pinned', isPinned);
+
+        if (imageFile) {
+            const jpegBlob = await convertToJpeg(imageFile);
+            formData.append('image', jpegBlob, 'photo.jpg');
+            btn.innerHTML = 'Saving...';
+        }
+
+        const res = await fetch('../../../backend/achievement/update_achievement.php', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            location.reload();
+        } else {
+            alert('Error: ' + data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }
+    } catch (err) {
+        alert(err.message || 'Something went wrong');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
 });
+
+/* ---------- COUNT ---------- */
 
 function updateAchievementCount() {
     const total = document.querySelectorAll('#achievementGrid .gallery-card[data-id]').length;

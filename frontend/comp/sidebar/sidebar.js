@@ -36,16 +36,6 @@ function showSection(section) {
         selectedSection.style.display = 'block';
     }
 
-    document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active');
-    });
-
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach(item => {
-        if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(section)) {
-            item.classList.add('active');
-        }
-    });
 
     // Mobile pe selection ke baad sidebar close
     if (window.innerWidth <= 768) {

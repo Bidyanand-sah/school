@@ -1,6 +1,13 @@
 <?php
 require_once __DIR__ . '/../../../backend/config.php';
-// require_once __DIR__ . '/../../backend/config.php';
+
+$currentPath = $_SERVER['SCRIPT_NAME'];
+if (!function_exists('navActive')) {
+    function navActive($needle) {
+        global $currentPath;
+        return strpos($currentPath, $needle) !== false ? ' active' : '';
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +29,7 @@ require_once __DIR__ . '/../../../backend/config.php';
 
     <!-- Menu Items -->
     <div class="sidebar-menu">
-        <a class="menu-item active" href="<?= app_url('/frontend/admin/index.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/index.php') ?>" href="<?= app_url('/frontend/admin/index.php') ?>">
             <i class="fas fa-th-large"></i>
             <span>Dashboard</span>
         </a>
@@ -34,38 +41,38 @@ require_once __DIR__ . '/../../../backend/config.php';
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/teacher/teacher.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/teacher/teacher.php') ?>" href="<?= app_url('/frontend/admin/teacher/teacher.php') ?>">
             <i class="fas fa-chalkboard-teacher"></i>
             <span>Teachers</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/achievement/achievement.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/achievement/achievement.php') ?>" href="<?= app_url('/frontend/admin/achievement/achievement.php') ?>">
             <i class="fas fa-door-open"></i>
             <span>Achievement</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/gallery/gallery.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/gallery/gallery.php') ?>" href="<?= app_url('/frontend/admin/gallery/gallery.php') ?>">
             <i class="fas fa-images"></i>
             <span>Gallery</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/notice/notice.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/notice/notice.php') ?>" href="<?= app_url('/frontend/admin/notice/notice.php') ?>">
             <i class="fas fa-bullhorn"></i>
             <span>Notice Board</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/enquiry/enquiry.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/enquiry/enquiry.php') ?>" href="<?= app_url('/frontend/admin/enquiry/enquiry.php') ?>">
             <i class="fas fa-address-card"></i>
             <span>Enquiry</span>
         </a>
-        <a class="menu-item" href="<?= app_url('/frontend/admin/testimonial/testimonial.php') ?>">
+        <a class="menu-item<?= navActive('/frontend/admin/testimonial/testimonial.php') ?>" href="<?= app_url('/frontend/admin/testimonial/testimonial.php') ?>">
             <i class="fas fa-address-card"></i>
             <span>Testimonial</span>
         </a>
         <?php if (($_SESSION['admin_role'] ?? '') === 'superadmin'): ?>
-<a class="menu-item" href="<?= app_url('/frontend/admin/site_settings/index.php') ?>">
+<a class="menu-item<?= navActive('/frontend/admin/site_settings/index.php') ?>" href="<?= app_url('/frontend/admin/site_settings/index.php') ?>">
     <i class="bi bi-gear-fill"></i>
     <span>Site Settings</span>
 </a>
 <?php endif; ?>
 
-    <a class="menu-item" href="<?= app_url('/frontend/admin/account/account.php') ?>">
+    <a class="menu-item<?= navActive('/frontend/admin/account/account.php') ?>" href="<?= app_url('/frontend/admin/account/account.php') ?>">
     <i class="bi bi-person-gear"></i>
     <span>My Account</span>
 </a>
